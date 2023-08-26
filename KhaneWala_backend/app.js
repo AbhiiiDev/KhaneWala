@@ -8,11 +8,11 @@ app.get("/",(req,res)=>{
     res.send("hello bebes, everything is working fine")
 })
 
-// dotenv.config({
-//     path:"khaneWala_backend/config/config.env"
-// })
+app.use(express.json());
 
 connectDataBase();
+
+app.use("/api",require('./routes/createUser'))
 
 app.listen(port,()=>{
     console.log(`server is listening at port:${port}`)

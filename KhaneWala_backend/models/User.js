@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const validator=require('validator');
 
 // const {schema}=mongoose;
 
@@ -18,7 +19,7 @@ const UserSchema=new mongoose.Schema({
     password:{
         type:String,
         required:[true,"Please enter your password"],
-        minLength:[7,"password should be greater than 7 characters"],
+        minLength:[6,"password should be greater than 5 characters"],
     select:false //so that do not appear on user.find()
 },
 location:{

@@ -1,17 +1,16 @@
 import Login from './components/Login'
 
 import {
-  createBrowserRouter,
-  BrowserRouter as Router,
-  RouterProvider,
-  Routes,
-  Route
-} from "react-router-dom";
+ Routes,
+ BrowserRouter as Router,
+Route
+} from 'react-router-dom';
 
 
 import './App.css'
 
 import Home from './screens/Home'
+import SignUp from './screens/SignUp';
 
 
 
@@ -19,20 +18,21 @@ function App() {
 
   
   return (
-//  <Router>
-  
+ <Router>
+  <div>
 
-// <Routes>
-//   <Route  path='/' element={<Home/>}/>
-//   <Route  path='/login' element={<Login/>}/>
-// </Routes>
 
-//  </Router>
+<Routes>
+  <Route  path='/' element={<Home/>}/>
+  <Route  path='/login' element={<Login/>}/>
+  <Route path='/signup' element={<SignUp/>}/>
+</Routes>
+
+  </div>
+ </Router>
        
 
 
-<Home/>
-  
   )
 }
 
