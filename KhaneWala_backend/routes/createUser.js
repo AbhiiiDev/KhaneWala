@@ -24,17 +24,26 @@ router.post("/createUser",async(req,res)=>{
 })
 
 router.post("/loginUser",async(req,res)=>{
-
+let email=req.body.email;
 
     try {
-     await  User.create({
-           password:req.body.password,
-           email:req.body.email,
-           
-        })
-        res.status(200).json({
-            success:true
-        })
+  let userData= await  User.findOne({ email });
+
+  if(!userData)
+  {
+    return res.status(400).json({
+        errors:"No User registered"
+    })
+  }
+ if(!req.body.password === userData.password)
+ {
+    return res.status(400).json({
+        errors:"Enter correct credentials"
+    })
+ }
+return res.json({
+    success:true
+})
     } catch (error) {
         console.log(error)
         res.json({success:false});
