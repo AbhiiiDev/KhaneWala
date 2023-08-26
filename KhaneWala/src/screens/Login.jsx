@@ -1,7 +1,10 @@
 import React,{ useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 export default function Login() {
+let navigate=useNavigate();
+
 const [credentials, setcredentials] = useState({
   password:"",
   email:"",
@@ -27,10 +30,11 @@ if(!json.success){
     "enter correct credentials"
   )
 }
-
+if(json.success){
+  navigate("/")
 }
 
-
+}
 
 const handleChange=(event)=>{
 setcredentials({...credentials,[event.target.name]:event.target.value})
