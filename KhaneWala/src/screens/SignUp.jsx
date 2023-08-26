@@ -1,19 +1,61 @@
-import React from "react";
+import React,{ useState } from "react";
+
 
 export default function SignUp() {
+const [credentials, setcredentials] = useState({
+  name:"",
+  password:"",
+  email:"",
+  geolocation:""
+})
+
+const handleSubmit=async(e)=>{
+e.preventDefault();
+
+const response=await fetch("http://localhost:5000/api/createUser",{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+  body:JSON.stringify({
+    name:credentials.name,
+    email:credentials.email,
+  password:credentials.password,
+location:credentials.geolocation  })
+});
+const json=await response.json();
+console.log(json);
+
+if(!json.success){
+  alert(
+    "enter valid credentials"
+  )
+}
+
+}
+
+
+
+const handleChange=(event)=>{
+setcredentials({...credentials,[event.target.name]:event.target.value})
+}
+
   return (
     <>
     <div className="container">
 
-      <form >
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
         <label htmlFor="name">Name</label>
           <input
-            type="name"
+            type="text"
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter your name"
+            name="name"
+            value={credentials.name}
+           onChange={handleChange}
             />
           <label htmlFor="Email">Email</label>
           <input
@@ -22,6 +64,9 @@ export default function SignUp() {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            name="email"
+            value={credentials.email}
+            onChange={handleChange}
             />
           <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
@@ -34,9 +79,24 @@ export default function SignUp() {
             className="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
+            value={credentials.password}
+            name="password"
+            onChange={handleChange}
             />
-        </div>
+             <label htmlFor="name">location</label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter your name"
+            name="geolocation"
+            value={credentials.geolocation}
+            onChange={handleChange}
+            />
   
+        </div>
+       
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

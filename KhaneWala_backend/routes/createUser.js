@@ -23,5 +23,24 @@ router.post("/createUser",async(req,res)=>{
     }
 })
 
+router.post("/loginUser",async(req,res)=>{
+
+
+    try {
+     await  User.create({
+           password:req.body.password,
+           email:req.body.email,
+           
+        })
+        res.status(200).json({
+            success:true
+        })
+    } catch (error) {
+        console.log(error)
+        res.json({success:false});
+    }
+})
+
+
 
 module.exports=router;
