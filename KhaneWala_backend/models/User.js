@@ -20,7 +20,7 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:[true,"Please enter your password"],
         minLength:[6,"password should be greater than 5 characters"],
-    select:false //so that do not appear on user.find()
+     //so that do not appear on user.find()
 },
 location:{
     type:String,

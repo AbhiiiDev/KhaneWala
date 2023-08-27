@@ -8,7 +8,7 @@ export default function Carousel() {
         className="carousel slide"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner" style={{ maxHeight: "550px" }}>
+        <div className="carousel-inner" style={{ maxHeight: "600px" }}>
           <div className="carousel-item active" data-bs-interval="3000">
             <img
               src="https://source.unsplash.com/random/900×700/?burger"

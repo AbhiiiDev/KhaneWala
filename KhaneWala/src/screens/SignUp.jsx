@@ -50,11 +50,11 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
     <div className="container">
 
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="m-2 form-group">
         <label htmlFor="name">Name</label>
           <input
             type="text"
-            className="form-control"
+            className="m-2 form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter your name"
@@ -65,7 +65,7 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
           <label htmlFor="Email">Email</label>
           <input
             type="email"
-            className="form-control"
+            className="m-2 form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
@@ -77,11 +77,11 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
             We'll never share your email with anyone else.
           </small>
         </div>
-        <div className="form-group">
+        <div className="m-2 form-group">
           <label htmlFor="Password">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="m-2 form-control"
             id="exampleInputPassword1"
             placeholder="Password"
             value={credentials.password}
@@ -91,7 +91,7 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
              <label htmlFor="name">location</label>
           <input
             type="text"
-            className="form-control"
+            className="m-2 form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter your name"
@@ -102,8 +102,8 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
   
         </div>
        
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="m-3 btn btn-dark">
+          Sign Up
         </button>
       </form>
             </div>
