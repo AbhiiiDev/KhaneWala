@@ -21,11 +21,12 @@ app.get("/",(req,res)=>{
     res.send("hello bebes, everything is working fine")
 })
 
-
+app.get('/')
 
 connectDataBase();
 
 app.use("/api",require('./routes/createUser'))
+app.use("/api",require('./routes/displayData'))
 
 app.listen(port,()=>{
     console.log(`server is listening at port:${port}`)

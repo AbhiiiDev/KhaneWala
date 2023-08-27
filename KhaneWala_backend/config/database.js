@@ -7,9 +7,21 @@ const connectDataBase=()=>{
         useUnifiedTopology:true,
     
     }).then(
-        (data)=>{
-            console.log(`mongodb connected succesfully with server : ${data.connect.host}`)
+       async()=>{
+            console.log(`mongodb connected succesfully with server `);
+            
+const db=mongoose.connection.db;
+//fetch food_data colletion
+const fetched_data = await db.collection("food_Data").find({}).toArray();
+global.foodItem=fetched_data;
+
+const foodCategory=await db.collection("foodCategory").find({}).toArray();
+global.foodCategory=foodCategory;
+// console.log(fetched_data,foodCategory);
+
         }
+
+
     ).catch(error=>{console.log("database conncection error:",error)})
 }
 module.exports=connectDataBase
