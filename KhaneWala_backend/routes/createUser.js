@@ -6,14 +6,14 @@ const User=require("../models/User")
 
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
-const { Await } = require('react-router-dom');
+
 
 const jwtSecret="heythisisjwtsecretnoonecanbreakthis"
 
 router.post("/createUser",async(req,res)=>{
 
     const salt=await bcrypt.genSalt(10);
-    let secPass=await bcrypt.hash(req.body.password,salt);
+     const secPass=await bcrypt.hash(req.body.password,salt);
 
     try {
      await  User.create({
@@ -31,11 +31,11 @@ router.post("/createUser",async(req,res)=>{
     }
 })
 
-router.post("/loginUser",async(req,res)=>{
-let email=req.body.email;
 
+router.post("/loginUser", async (req,res)=>{
+const email=req.body.email;
     try {
-  let userData= await  User.findOne({ email });
+const userData= await User.findOne({ email });
 
   if(!userData)
   {
@@ -43,8 +43,13 @@ let email=req.body.email;
         errors:"No User registered"
     })
   }
-console.log(userData)
-  const pwCompare= await bcrypt.compare(req.body.password,userData.password);
+
+
+  console.log(req.body.password);
+  console.log(userData.password);
+
+  const pwCompare= await bcrypt.compare(req.body.password, userData.password);
+
  if(!pwCompare)
  {
     return res.status(400).json({
