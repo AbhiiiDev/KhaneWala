@@ -31,7 +31,10 @@ if(!json.success){
   )
 }
 if(json.success){
+  localStorage.setItem("authToken",json.authToken);
+  console.log(localStorage.getItem("authToken"))
   navigate("/")
+
 }
 
 }
@@ -45,12 +48,12 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
     <div className="container">
 
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="m-2 form-group">
       
           <label htmlFor="Email">Email</label>
           <input
             type="email"
-            className="form-control"
+            className="m-2  form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
@@ -66,7 +69,7 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
           <label htmlFor="Password">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="m-2 form-control"
             id="exampleInputPassword1"
             placeholder="Password"
             value={credentials.password}
@@ -77,8 +80,8 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
   
         </div>
        
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="m-3 btn btn-dark">
+          Login
         </button>
       </form>
             </div>
