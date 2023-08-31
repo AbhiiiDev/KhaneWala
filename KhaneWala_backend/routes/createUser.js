@@ -45,8 +45,8 @@ const userData= await User.findOne({ email });
   }
 
 
-  console.log(req.body.password);
-  console.log(userData.password);
+//   console.log(req.body.password);
+//   console.log(userData.password);
 
   const pwCompare= await bcrypt.compare(req.body.password, userData.password);
 

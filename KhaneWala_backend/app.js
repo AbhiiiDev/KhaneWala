@@ -5,14 +5,15 @@ const app=express();
 const port=5000
 const cors=require('cors');
 
-// app.use((req,res,next)=>{
-//     res.setHeader("Access-Control-Allow-Origin","https://localhost:5173");
-//     res.header(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept"
-//     );
-//     next();
-// })
+
+ app.use((req,res,next)=>{
+     res.setHeader("Access-Control-Allow-Origin","https://localhost:5173");
+     res.header(
+         "Access-Control-Allow-Headers",
+         "Origin, X-Requested-With, Content-Type, Accept"
+     );
+     next();
+ })
 
 app.use(cors());
 app.use(express.json());
