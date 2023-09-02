@@ -49,7 +49,9 @@ const Home = () => {
             foodItem.filter((item)=> item.CategoryName===data.CategoryName).map(filterItems=>{
               return (
                 <div key={filterItems._id} className="col-12 col-md-6 col-lg-3 ">
-            <Card/>
+            <Card foodName={filterItems.name}
+            options={filterItems.options[0]}
+            imgSrc={filterItems.img}/>
             </div>
               )
             }):
