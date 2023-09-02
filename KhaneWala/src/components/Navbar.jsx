@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS
 const Navbar = () => {
+const navigate=useNavigate();
+
+const handleClick=()=>{
+localStorage.removeItem("authToken");
+navigate("/login")
+}
+
   return (
     <div>
         
@@ -24,24 +31,57 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/">
+                <Link className="nav-link active fs-5" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
+
+
+
+              {
+                (localStorage.getItem("authToken"))?
+<li className="nav-item">
+                <Link className="nav-link active fs-5" aria-current="page" to="/">
+                  My Orders
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/signup" > 
-                  SignUp
-                </Link>
-              </li>
+                : ""
+              }
+             
              
             </ul>
+
+<div className="">
+
+  {
+    (!localStorage.getItem("authToken"))?
+<div className="d-flex">
+
+    <Link className="btn bg-white text-dark" to="/login">
+    Login
+  </Link>
+
+  <Link className="btn bg-white text-dark mx-1" to="/signup" > 
+    SignUp
+  </Link>
+</div>
+: 
+<div >
+
+<Link className="btn bg-white text-dark mx-1" to="/login">
+My Cart
+</Link>
+<div className="btn bg-white text-dark mx-1 " onClick={handleClick}>
+Logout
+</div>
+</div>
+  }
+
+
+</div>
+
           </div>
         </div>
       </nav>
