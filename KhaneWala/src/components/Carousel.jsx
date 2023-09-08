@@ -13,7 +13,7 @@ export default function Carousel() {
             <img
               src="https://source.unsplash.com/random/900×700/?burger"
               className="d-block w-100"
-              alt="..."
+              alt="..." 
               style={{ filter: "brightness(30%)" }}
             />
           </div>

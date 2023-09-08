@@ -2,6 +2,12 @@ import React from 'react'
 
 export default function Card(props) {
 
+
+const handleAddToCart=()=>{
+
+}
+
+
 let options=props.options;
 let priceOptions=Object.keys(options);
 
@@ -15,7 +21,7 @@ let priceOptions=Object.keys(options);
            
 
             <div className="container w-100">
-              <select className="m-2 h-100 bg-dark rounded ">
+              <select className="m-2 h-100 bg-success rounded ">
                 {Array.from(Array(6), (e, i) => {
                   return (
                     <option key={i + 1} value={i + 1}>
@@ -24,7 +30,7 @@ let priceOptions=Object.keys(options);
                   );
                 })}
               </select>
-              <select className="m-2 h-100 bg-dark rounded ">
+              <select className="m-2 h-100 bg-success rounded ">
            {
             priceOptions.map(
               (data)=>{
@@ -38,6 +44,10 @@ let priceOptions=Object.keys(options);
 
               <div className="d-inline h-100 fs-5">Total Price</div>
             </div>
+          <hr/>
+          <button className={`btn btn-success justify-center ms-2`} onClick={handleAddToCart} >
+            Add to Cart
+          </button>
           </div>
         </div>
       </div>

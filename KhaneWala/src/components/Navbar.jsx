@@ -50,7 +50,6 @@ navigate("/login")
                 : ""
               }
              
-             
             </ul>
 
 <div className="">
@@ -69,7 +68,6 @@ navigate("/login")
 </div>
 : 
 <div >
-
 <Link className="btn bg-white text-dark mx-1" to="/login">
 My Cart
 </Link>
