@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousel from "../components/Carousel";
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 
 const Home = () => {
   const [foodCat, setfoodCat] = useState([]);
@@ -19,7 +20,7 @@ const Home = () => {
 
     setfoodCat(response[1]);
     setFoodItem(response[0]);
-    console.log(response[0], response[1]);
+    // console.log(response[0], response[1]);
   };
 
   useEffect(() => {
@@ -35,23 +36,24 @@ const Home = () => {
         <Carousel />
       </div>
       <div className="container">
-        {foodCat !== []
+        {foodCat.length !== 0
           ? foodCat.map((data) => {
               return (  
-                <div className="row mb-3">
-                <div key={data._id} className="fs-3 m-3">
+                <div key={data._id} className="row mb-3">
+                <div className="fs-3 m-3">
                   {data.CategoryName}
                 </div> 
                <hr/>
                {
-            foodItem !==[]
+            foodItem.length !==0
             ?
             foodItem.filter((item)=> item.CategoryName===data.CategoryName).map(filterItems=>{
               return (
                 <div key={filterItems._id} className="col-12 col-md-6 col-lg-3 ">
-            <Card foodName={filterItems.name}
+            <Card                
+            foodItems={filterItems}
             options={filterItems.options[0]}
-            imgSrc={filterItems.img}/>
+          />
             </div>
               )
             }):
@@ -75,5 +77,6 @@ const Home = () => {
     </>
   );
 };
+
 
 export default Home;
