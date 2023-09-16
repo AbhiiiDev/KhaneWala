@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousel from "../components/Carousel";
 import { useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+
 
 const Home = () => {
   const [foodCat, setfoodCat] = useState([]);

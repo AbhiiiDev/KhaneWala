@@ -11,7 +11,8 @@ import './App.css'
 
 import Home from './screens/Home'
 import SignUp from './screens/SignUp';
-import CartProvider from './components/ContextReducer';
+import {CartProvider} from './components/ContextReducer';
+import Cart from './screens/Cart';
 
 
 
@@ -28,6 +29,7 @@ function App() {
   <Route  path='/' element={<Home/>}/>
   <Route  path='/login' element={<Login/>}/>
   <Route path='/signup' element={<SignUp/>}/>
+  <Route path='/cart' element={<Cart/>}/>
 </Routes>
 </CartProvider>
 

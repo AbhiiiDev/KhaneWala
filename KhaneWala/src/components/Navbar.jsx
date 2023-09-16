@@ -1,6 +1,7 @@
 import React from "react";
 import { Link,useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS
+
 const Navbar = () => {
 const navigate=useNavigate();
 
@@ -68,9 +69,22 @@ navigate("/login")
 </div>
 : 
 <div >
-<Link className="btn bg-white text-dark mx-1" to="/login">
+<Link className="btn bg-white text-dark mx-1  position-relative" to="/cart">
 My Cart
+<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    2
+    <span className="visually-hidden">unread messages</span>
+  </span>
 </Link>
+
+{/* <button type="button" class="btn btn-primary position-relative">
+  Inbox
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    99+
+    <span class="visually-hidden">unread messages</span>
+  </span>
+</button> */}
+
 <div className="btn bg-white text-dark mx-1 " onClick={handleClick}>
 Logout
 </div>

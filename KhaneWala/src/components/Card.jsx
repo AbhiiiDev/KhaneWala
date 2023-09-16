@@ -8,36 +8,47 @@ Card.propTypes = {
 
 
 export default function Card(props) {
- let dispatch=useDispatchCart();
-  let data=useCart();
+ const dispatch=useDispatchCart();
+
   let priceRef=useRef();
-  let options=props.options;
-  let priceOptions=Object.keys(options);
+
 const [qty, setQty] = useState(1)
 const [size, setSize] = useState("")
+let options=props.options;
+let priceOptions=Object.keys(options);
+let foodItem=props.foodItems;
+let data=useCart();
+
+const handleQty = (e) => {
+  setQty(e.target.value);
+}
+const handleOptions = (e) => {
+  setSize(e.target.value);
+}
+
 
 const handleAddToCart=async()=>{
-  await dispatch({type:"Add",id:props.foodItems._id,name:props.foodItems.name,price:finalPrice,img:props.foodItems.img,qty:qty,size:size})
+  await dispatch({type:"Add",id:foodItem._id,name:foodItem.name,price:finalPrice,img:foodItem.img,qty:qty,size:size})
   await console.log(data);
   }
-  let finalPrice=qty* parseInt(options[size]);
+
 
 useEffect(()=>{
 setSize(priceRef.current.value)
 },[])
 
-
+let finalPrice=qty* parseInt(options[size]);
 
   return (
   <div>
-        <div className="card m-3" style={{ width: "18rem" }}>
-          <img src={props.foodItems.img} className="card-img-top" alt="..." style={{height:"150px",objectFit:"fill"}} />
-          <div className="card-body">
-            <h5 className="card-title">{props.foodItems.name}</h5>
+        <div className="card m-3" style={{ width: "18rem", margin:"10" }}>
+          <img src={foodItem.img} className="card-img-top" alt="..." style={{height:"150px",objectFit:"fill"}} />
+          <div className="card-body ">
+            <h5 className="card-title">{foodItem.name}</h5>
            
 
             <div className="container w-100">
-              <select className="m-2 h-100 bg-success rounded " onChange={(e)=>setQty(e.target.value)}>
+              <select className="m-2 h-100 bg-success rounded " onChange={handleQty}>
                 {Array.from(Array(6), (e, i) => {
                   return (
                     <option key={i + 1} value={i + 1}>
@@ -46,7 +57,7 @@ setSize(priceRef.current.value)
                   );
                 })}
               </select>
-              <select className="m-2 h-100 bg-success rounded " ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
+              <select className="m-2 h-100 bg-success rounded " ref={priceRef} onChange={handleOptions}>
            {
             priceOptions.map(
               (data)=>{
