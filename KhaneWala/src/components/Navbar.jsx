@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link,useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS
+import Modal from "../modal";
+import Cart from "../screens/Cart";
 
 const Navbar = () => {
 const navigate=useNavigate();
-
+const [cartView, setcartView] = useState(false);
 const handleClick=()=>{
 localStorage.removeItem("authToken");
 navigate("/login")
@@ -69,13 +71,14 @@ navigate("/login")
 </div>
 : 
 <div >
-<Link className="btn bg-white text-dark mx-1  position-relative" to="/cart">
+<Link className="btn bg-white text-dark mx-1  position-relative" onClick={()=>setcartView(true)} to="/cart">
 My Cart
 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
     2
     <span className="visually-hidden">unread messages</span>
   </span>
 </Link>
+{cartView? <Modal onClose={()=>setcartView(false)}  > <Cart/></Modal>:null}
 
 {/* <button type="button" class="btn btn-primary position-relative">
   Inbox
