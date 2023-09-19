@@ -3,20 +3,19 @@ import { Link,useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS
 import Modal from "../modal";
 import Cart from "../screens/Cart";
+import { useCart } from "./ContextReducer";
 
 const Navbar = () => {
 const navigate=useNavigate();
 const [cartView, setcartView] = useState(false);
+let data=useCart();
 const handleClick=()=>{
 localStorage.removeItem("authToken");
 navigate("/login")
 }
 
   return (
-    <div>
-        
-
-       
+    <div> 
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
@@ -74,11 +73,10 @@ navigate("/login")
 <Link className="btn bg-white text-dark mx-1  position-relative" onClick={()=>setcartView(true)} to="/cart">
 My Cart
 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    2
-    <span className="visually-hidden">unread messages</span>
+{data.length}
   </span>
 </Link>
-{cartView? <Modal onClose={()=>setcartView(false)}  > <Cart/></Modal>:null}
+{cartView? <Modal onClose={()=>setcartView(false)}  > <Cart/></Modal>:""}
 
 {/* <button type="button" class="btn btn-primary position-relative">
   Inbox

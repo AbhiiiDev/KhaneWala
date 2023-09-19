@@ -1,9 +1,9 @@
 import React from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+import { DeleteSweep } from '@mui/icons-material';
 export default function Cart() {
   let data = useCart();
-  let dispatch = useDispatchCart();
-  
+  const dispatch = useDispatchCart();
   if (data.length === 0) {
     return (
       <div>
@@ -11,10 +11,10 @@ export default function Cart() {
       </div>
     )
   }
-  const handleRemove = (index)=>{
-    console.log(index)
-    dispatch({type:"REMOVE",index:index})
-  }
+  // const handleRemove = (index)=>{
+  //   console.log(index)
+  //   dispatch({type:"REMOVE",index:index})
+  // }
 
   const handleCheckOut = async () => {
     // let userEmail = localStorage.getItem("userEmail");
@@ -63,13 +63,13 @@ export default function Cart() {
                 <td  >{food.qty}</td>
                 <td >{food.size}</td>
                 <td >{food.price}</td>
-                <td  ><button type="button" className="btn p-0"></button> </td></tr>
+                <td  ><button type="button" className="btn p-0" ><DeleteSweep onClick={()=>{ dispatch({type:"REMOVE",index:index})}}/></button> </td></tr>
             ))}
           </tbody>
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
         <div>
-          <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
+          <button className='btn bg-success mt-5 '  > Check Out </button>
         </div>
       </div>
 
