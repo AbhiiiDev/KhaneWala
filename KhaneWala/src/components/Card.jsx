@@ -28,8 +28,39 @@ const handleOptions = (e) => {
 
 
 const handleAddToCart=async()=>{
+let food=[];
+for(const item of data)
+{
+if(item.id===foodItem._id)
+{
+  food=item;
+  break;
+}
+console.log(food);
+}
+if(food.length!== 0)
+{
+if(food.size === size)
+{
+  // console.log(foodItem.size);
+  // console.log(food.size);
+  await dispatch({type:"Update",id:foodItem._id,name:foodItem.name,price:finalPrice,qty:qty})
+  return
+}
+
+else if(food.size!==foodItem.size)
+{
   await dispatch({type:"Add",id:foodItem._id,name:foodItem.name,price:finalPrice,img:foodItem.img,qty:qty,size:size})
-  await console.log(data);
+  return
+}
+
+return
+}
+else {
+  await dispatch({type:"Add",id:foodItem._id,name:foodItem.name,price:finalPrice,img:foodItem.img,qty:qty,size:size})
+  return
+
+}
   }
 
 
