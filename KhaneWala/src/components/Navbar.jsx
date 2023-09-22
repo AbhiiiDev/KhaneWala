@@ -14,6 +14,11 @@ localStorage.removeItem("authToken");
 navigate("/login")
 }
 
+const toggleCartView=()=>{
+  setcartView(!cartView);
+}
+
+
   return (
     <div> 
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -70,13 +75,15 @@ navigate("/login")
 </div>
 : 
 <div >
-<Link className="btn bg-white text-dark mx-1  position-relative" onClick={()=>setcartView(true)} to="/cart">
+<Link className="btn bg-white text-dark mx-1  position-relative" onClick={toggleCartView}>
 My Cart
 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 {data.length}
   </span>
 </Link>
-{cartView? <Modal onClose={()=>setcartView(false)}  > <Cart/></Modal>:""}
+{cartView  && (<Modal onClose={toggleCartView}  >
+   <Cart/>
+   </Modal>)}
 
 {/* <button type="button" class="btn btn-primary position-relative">
   Inbox

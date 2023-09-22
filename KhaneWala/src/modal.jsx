@@ -32,6 +32,6 @@ export default function Modal({ children, onClose }) {
         {children}
       </div>
     </>,
-    document.getElementById("cart-root")
+    document.body
   )
 }
