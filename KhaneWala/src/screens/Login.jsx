@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import "./login.css";
 
 
 export default function Login() {
@@ -45,45 +46,57 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
 
   return (
     <>
-    <div className="container">
+    <div className="row justify-content-center " id="login-form">
 
+      <div className="  col-sm-6 col-lg-6 my-5 " id="form-content">
       <form onSubmit={handleSubmit}>
-        <div className="m-2 form-group">
+        
       
-          <label htmlFor="Email">Email</label>
+          <label htmlFor="Email" className="form-label mt-3 text-light  ">Email</label>
           <input
             type="email"
-            className="m-2  form-control"
+            className=" form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
+            placeholder="e.g. adarsh@example.com"
             name="email"
             value={credentials.email}
             onChange={handleChange}
             />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
+          <small id="emailHelp" className="form-text  d-block text-light ">
+            We keep it authentic
           </small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="Password">Password</label>
+        
+        
+          <label htmlFor="Password" className="form-label mt-3 text-light ">Password</label>
           <input
             type="password"
-            className="m-2 form-control"
+            className=" form-control"
             id="exampleInputPassword1"
-            placeholder="Password"
+            placeholder="******"
             value={credentials.password}
-            name="password"
+            name="Password"
             onChange={handleChange}
             />
              
-  
-        </div>
-       
-        <button type="submit" className="m-3 btn btn-dark">
+             <div className="form-floating my-3">
+              <textarea className="form-control" id="query" cols="83" rows="40"></textarea>
+              <label htmlFor="query" className="form-label">Your query...</label>
+
+            </div>
+        
+        <div className="text-center">
+        <button type="submit" className="m-3 btn btn-success">
           Login
         </button>
+
+        </div>
+       
       </form>
+        
+      </div>
+
+      
             </div>
     </>
   );

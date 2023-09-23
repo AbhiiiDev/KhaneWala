@@ -1,0 +1,32 @@
+#login-form{
+    height:700px;
+
+    background-image: url("https://img.freepik.com/free-photo/spoons-with-powder-condiments-copy-space_23-2148601204.jpg?w=1060&t=st=1695495409~exp=1695496009~hmac=d8e1b8dc9fdd882d82c283bc4fc6a6ab606cbbbfb4a40b048df4c824631f0051");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  
+    
+}
+
+#form-content{
+    /* background-color: rgb(249, 183, 159); */
+    border-radius:6px;
+    max-height: 400px;
+    position: relative;
+
+    backdrop-filter: blur(10px);
+  
+    
+
+}
+
+#emailHelp
+{
+    color:white;
+}
+
+
+  
+
+
+  
