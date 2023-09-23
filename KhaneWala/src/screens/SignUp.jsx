@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
+import './SignUp.css';
 
 export default function SignUp() {
  let navigate=useNavigate();
@@ -47,14 +48,16 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
 
   return (
     <>
-    <div className="container">
+    <div className="row justify-content-center  " id="signUp-form">
+
+      <div className="col-6 p-3 mt-5" id="signUp-content">
 
       <form onSubmit={handleSubmit}>
-        <div className="m-2 form-group">
-        <label htmlFor="name">Name</label>
+        
+        <label htmlFor="name" className="mb-1">Name</label>
           <input
             type="text"
-            className="m-2 form-control"
+            className=" mb-3 form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter your name"
@@ -62,10 +65,10 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
             value={credentials.name}
            onChange={handleChange}
             />
-          <label htmlFor="Email">Email</label>
+          <label htmlFor="Email" className="mb-1">Email</label>
           <input
             type="email"
-            className="m-2 form-control"
+            className=" form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
@@ -73,25 +76,25 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
             value={credentials.email}
             onChange={handleChange}
             />
-          <small id="emailHelp" className="form-text text-muted">
+          <small id="emailHelp" className="form-text text-muted d-block mb-3">
             We'll never share your email with anyone else.
           </small>
-        </div>
-        <div className="m-2 form-group">
-          <label htmlFor="Password">Password</label>
+        
+        
+          <label htmlFor="Password" className="mb-1">Password</label>
           <input
             type="password"
-            className="m-2 form-control"
+            className=" mb-3 form-control"
             id="exampleInputPassword1"
             placeholder="Password"
             value={credentials.password}
             name="password"
             onChange={handleChange}
             />
-             <label htmlFor="name">location</label>
+             <label htmlFor="name" className="mb-1">location</label>
           <input
             type="text"
-            className="m-2 form-control"
+            className="mb-3  form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter your name"
@@ -100,12 +103,19 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
             onChange={handleChange}
             />
   
-        </div>
-       
-        <button type="submit" className="m-3 btn btn-dark">
+      
+       <div className="text-center">
+       <button type="submit" className="m-3 btn btn-dark">
           Sign Up
         </button>
+
+       </div>
+        
       </form>
+
+      </div>
+
+      
             </div>
     </>
   );
