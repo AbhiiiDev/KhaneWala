@@ -39,7 +39,7 @@ try {
         try{
 
         
-await Order.findOneAndUpdate({
+await orders.findOneAndUpdate({
     email:req.body.email
 },
 //code to append data in prev order data
