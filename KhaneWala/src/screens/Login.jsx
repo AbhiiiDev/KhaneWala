@@ -32,9 +32,11 @@ if(!json.success){
   )
 }
 if(json.success){
+  localStorage.setItem("userEmail",credentials.email);
   localStorage.setItem("authToken",json.authToken);
   console.log(localStorage.getItem("authToken"))
-  navigate("/")
+  navigate("/");
+ 
 
 }
 
@@ -75,7 +77,7 @@ setcredentials({...credentials,[event.target.name]:event.target.value})
             id="exampleInputPassword1"
             placeholder="******"
             value={credentials.password}
-            name="Password"
+            name="password"
             onChange={handleChange}
             />
              

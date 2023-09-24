@@ -1,5 +1,5 @@
 const express=require('express')
-const { route } = require('./createUser')
+
 const router=express.Router()
 
 

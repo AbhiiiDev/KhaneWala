@@ -20,7 +20,7 @@ const OVERLAY_STYLES = {
   right: 0,
   bottom: 0,
   backgroundColor: 'rgba(15, 15, 15, 0.7)',
-  zIndex: 1000,
+  zIndex: 1000, 
 }
 
 export default function Modal({ children, onClose }) {
