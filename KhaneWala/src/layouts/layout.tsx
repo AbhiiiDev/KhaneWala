@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/Footer";
 
 type Props = {
   children: React.ReactNode;
@@ -8,24 +8,18 @@ type Props = {
 
 const layout = ({ children }: Props) => {
   return (
- <div className="relative">
-{/* Hero Section */}
-<div className="absolute inset-0 z-0">
-  <HeroSection />
-</div>
+    <div className="flex flex-col min-h-screen">
+        {/* Fixed Header with higher z-index */}
+       
+          <Header />
+      
 
-{/* Fixed Header with higher z-index */}
-<div className="fixed top-1 left-1 right-1 z-20">
-  <Header />
-</div>
-
-{/* Push content down by the height of the HeroSection */}
-
-  <div className="absolute z-30 mt-[70vh] md:mt-[100vh] container mx-auto ">
-    {children}
-  </div>
-</div>
-  
+      {/* Push content down by the height of the HeroSection */}
+      <div className="z-30 mt-[70vh] md:mt-[100vh] container mx-auto ">
+        {children}
+      </div>
+      <Footer />
+    </div>
   );
 };
 

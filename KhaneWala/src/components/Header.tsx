@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom'
 import MobileNav from './MobileNav'
 import MainNav from './MainNav'
+import HeroSection from "@/components/HeroSection";
 
 const Header = () => {
   return (
+    <>
+    <div className='relative'>
+    <div className="absolute inset-0 z-0">
+          <HeroSection />
+        </div>
+        <div className="fixed top-1 left-1 right-1 z-20">
     <div className='bg-[#D6D6D6] bg-opacity-5 backdrop-filter backdrop-blur-lg z-20 py-4 rounded-full'>
         <div className='container mx-auto flex justify-between items-center flex-wrap'>
 
@@ -22,6 +29,9 @@ const Header = () => {
         </div>
             </div>
     </div>
+    </div>
+    </div>
+            </>
   )
 }
 
