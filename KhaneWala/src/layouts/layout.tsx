@@ -9,13 +9,11 @@ type Props = {
 const layout = ({ children }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
-        {/* Fixed Header with higher z-index */}
-       
+        {/* Fixed Header with higher z-index */}      
           <Header />
-      
-
+       
       {/* Push content down by the height of the HeroSection */}
-      <div className="z-30 mt-[70vh] md:mt-[100vh] container mx-auto ">
+      <div className="z-15 mt-[70vh] md:mt-[100vh] container mx-auto ">
         {children}
       </div>
       <Footer />

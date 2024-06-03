@@ -3,7 +3,7 @@ import Landing from "../assets/landing.png";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 pb-16">
       <div className="bg-transparent rounded-lg shadow-md py-8 flex flex-col gap-5 text-center ">
         <h1 className="font-bold text-black text-5xl">
           Don't think, Just Order kuch KhaneWala !
