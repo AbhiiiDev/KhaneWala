@@ -29,9 +29,9 @@ const MobileNav = () => {
        <Button className='flex-1'>
         LogIn
        </Button>
-       {/* <Button>
+       <Button>
         SignUp
-       </Button> */}
+       </Button>
       </SheetDescription>
     </SheetHeader>
   </SheetContent>

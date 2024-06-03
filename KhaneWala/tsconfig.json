@@ -26,6 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "HeroSection.jsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
