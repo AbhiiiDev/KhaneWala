@@ -1,3 +1,4 @@
+import { useCreateUser } from '@/api/MyUserApi';
 import {AppState, Auth0Provider, User} from '@auth0/auth0-react'
 import {  useNavigate } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ type Props ={
 export default function Auth0provilder({children}:Props) {
 
     const navigate=useNavigate();
+    const {createUser}=useCreateUser();
 
 const clientId=import.meta.env.VITE_AUTH0_CLIENT_ID;
 const domain=import.meta.env.VITE_AUTH0_DOMAIN;
@@ -26,7 +28,15 @@ console.log(clientId,domain,redirectUri)
 
 
 const onRedirect=(appState?:AppState,user?:User)=>{
-    console.log("user",user)
+
+  if(user?.sub && user?.email)
+    {
+      createUser({auth0Id:user.sub,email:user.email});
+    }
+    else
+    {
+      console.log('user not created')
+    }
     navigate('/');
 
 }

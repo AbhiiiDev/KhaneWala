@@ -7,7 +7,7 @@ const AppRoutes = () => {
   return (
   <Routes>
 <Route path='/' element={<Layout><HomePage/></Layout>}/>
-<Route path='/userProfile' element={<span>User Profile Page</span>}/>
+<Route path='/login' element={<span>User Profile Page</span>}/>
 <Route path='*' element={<span>Home page</span>}/>
 
   </Routes>
