@@ -12,12 +12,12 @@ type Props ={
 export default function Auth0provilder({children}:Props) {
 
     const navigate=useNavigate();
-    const {createUser}=useCreateUser();
+ 
 
 const clientId=import.meta.env.VITE_AUTH0_CLIENT_ID;
 const domain=import.meta.env.VITE_AUTH0_DOMAIN;
 const redirectUri=import.meta.env.VITE_AUTH0_REDIRECT_URI;
-
+const audience=import.meta.env.VITE_AUTH0_AUDIENCE;
 
 if(!domain || !clientId || !redirectUri)
     return (
@@ -28,16 +28,7 @@ console.log(clientId,domain,redirectUri)
 
 
 const onRedirect=(appState?:AppState,user?:User)=>{
-
-  if(user?.sub && user?.email)
-    {
-      createUser({auth0Id:user.sub,email:user.email});
-    }
-    else
-    {
-      console.log('user not created')
-    }
-    navigate('/');
+navigate('/auth-callback');
 
 }
 
@@ -46,7 +37,8 @@ const onRedirect=(appState?:AppState,user?:User)=>{
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-redirect_uri:redirectUri
+redirect_uri:redirectUri,
+audience:audience
   }}
   onRedirectCallback={onRedirect}
   >

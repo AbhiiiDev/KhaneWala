@@ -10,7 +10,7 @@ import Auth0provilder from './auth/Auth0provilder.tsx';
 const queryClient=new QueryClient({
 defaultOptions:{
   queries:{
-    refetchOnWindowFocus:false,
+    refetchOnWindowFocus:true,
   }
 }
 })

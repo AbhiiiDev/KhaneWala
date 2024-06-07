@@ -1,8 +1,14 @@
 
 import {Sheet,SheetDescription,SheetHeader,SheetTitle,SheetTrigger,SheetContent} from '@/components/ui/sheet'
 import { Button } from './ui/button'
+import {useAuth0} from '@auth0/auth0-react'
+import UserMenu from './UserMenu';
 
 const MobileNav = () => {
+
+const {loginWithRedirect,isAuthenticated}=useAuth0();
+
+
   return (
 <Sheet>
   <SheetTrigger>
@@ -25,13 +31,17 @@ const MobileNav = () => {
     <SheetHeader>
       <SheetTitle className='text-lg font-bold'>Welcome! to KhaneWala</SheetTitle>
 
-      <SheetDescription>
-       <Button className='flex-1'>
-        LogIn
-       </Button>
-       <Button>
-        SignUp
-       </Button>
+      <SheetDescription className='flex flex-col gap-4'>
+
+        {
+          isAuthenticated ?
+          ( <UserMenu/>)
+          :
+          (  <Button className='flex-1' onClick={()=>loginWithRedirect()}>
+          LogIn
+         </Button>)
+        }
+     
       </SheetDescription>
     </SheetHeader>
   </SheetContent>

@@ -13,7 +13,7 @@ const layout = ({ children }: Props) => {
           <Header />
        
       {/* Push content down by the height of the HeroSection */}
-      <div className="z-15 mt-[70vh] sm:mt-[70vh] xl:mt-[100vh] container mx-auto ">
+      <div className="z-15 mt-[80vh] sm:mt-[100vh] xl:mt-[100vh] container mx-auto ">
         {children}
       </div>
       <Footer />
