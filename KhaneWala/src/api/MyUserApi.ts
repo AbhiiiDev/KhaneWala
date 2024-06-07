@@ -87,20 +87,22 @@ const {getAccessTokenSilently}=useAuth0();
 const {mutateAsync:updatedUser,
     isLoading,
     isSuccess,
+    error,
     isError,
     reset,
 }=useMutation(updateUserRequest);
 
 if(isError)
     {
-        toast('Profile not updated');
+        toast.error(error.toString());
+        reset();
     }
 
 
 
 if(isSuccess)
     {
-        toast('profile updated');
+        toast.success('profile updated');
     }
 
 return {updatedUser,isLoading}

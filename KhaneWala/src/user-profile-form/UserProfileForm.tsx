@@ -21,7 +21,7 @@ export type UserFormData=z.infer<typeof formSchema>;
 //   currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
-//   title?: string;
+   title?: string;
 //   buttonText?: string;
  };
 
@@ -49,7 +49,7 @@ export default function UserProfileForm({title='User Profile',onSave,isLoading}:
       <FormItem>
         <FormLabel>Email</FormLabel>
         <FormControl>
-     <Input {...field} disabled className='bg-white' />
+     <Input {...field} disabled className='bg-slate-200 border-2 border-gray-400' />
         </FormControl>
       </FormItem>
     )}
@@ -61,7 +61,7 @@ export default function UserProfileForm({title='User Profile',onSave,isLoading}:
       <FormItem>
         <FormLabel>Name</FormLabel>
         <FormControl>
-     <Input {...field} className='bg-white' />
+     <Input {...field} className='bg-white border-2 border-gray-400' />
         </FormControl>
       </FormItem>
     )}
@@ -77,7 +77,7 @@ export default function UserProfileForm({title='User Profile',onSave,isLoading}:
       <FormItem className='flex-1'>
         <FormLabel>AddressLine1</FormLabel>
         <FormControl>
-     <Input {...field}  className='bg-white' />
+     <Input {...field}  className='bg-white border-2 border-gray-400' />
         </FormControl>
       </FormItem>
     )}
@@ -89,7 +89,7 @@ export default function UserProfileForm({title='User Profile',onSave,isLoading}:
       <FormItem className='flex-1'>
         <FormLabel>City</FormLabel>
         <FormControl>
-     <Input {...field} className='bg-white' />
+     <Input {...field} className='bg-white border-2 border-gray-400' />
         </FormControl>
       </FormItem>
     )}
@@ -101,7 +101,7 @@ export default function UserProfileForm({title='User Profile',onSave,isLoading}:
       <FormItem className='flex-1'>
         <FormLabel>Country</FormLabel>
         <FormControl>
-     <Input {...field} className='bg-white' />
+     <Input {...field} className='bg-white border-2 border-gray-400' />
         </FormControl>
       </FormItem>
     )}

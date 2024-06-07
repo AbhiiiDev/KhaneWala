@@ -23,7 +23,7 @@ export default function UserMenu() {
     </DropdownMenuTrigger>
     <DropdownMenuContent>
     <DropdownMenuItem>
-          <Link to="/userProfile" className="font-bold hover:text-orange-500">
+          <Link to="/userProfile" className="font-bold hover:text-orange-500 hover:bg-orange-200">
             User Profile
           </Link>
         </DropdownMenuItem>
