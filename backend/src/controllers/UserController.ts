@@ -1,5 +1,21 @@
 import User from "../models/User";
-import {Request,Response} from 'express'
+import {Request,Response} from 'express';
+
+
+const getUser=async(req:Request,res:Response)=>{
+try {
+    const currentUser=await User.findOne({_id:req.userId});
+
+    if(!currentUser)
+        {
+            return res.status(404).json({message:'User not found'});
+        }
+
+        res.json(currentUser);
+} catch (error) {
+    res.status(400).json({message:'Error while finding user'})
+}
+}
 
 
 const createUser =async(req:Request,res:Response)=>{
@@ -56,5 +72,6 @@ res.send(user);
 
 export default {
     createUser,
-    updateUser
+    updateUser,
+    getUser
 }

@@ -1,5 +1,5 @@
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import {z} from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,18 +18,23 @@ const formSchema = z.object({
 export type UserFormData=z.infer<typeof formSchema>;
 
  type Props = {
-//   currentUser: User;
+  currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
    title?: string;
 //   buttonText?: string;
  };
 
-export default function UserProfileForm({title='User Profile',onSave,isLoading}:Props) {
+export default function UserProfileForm({currentUser,title='User Profile',onSave,isLoading}:Props) {
 
   const form=useForm<UserFormData>({
-    resolver:zodResolver(formSchema)
+    resolver:zodResolver(formSchema),
+    defaultValues:currentUser
   })
+
+  useEffect(()=>{
+form.reset(currentUser);
+  },[currentUser,form])
 
   return (
 
