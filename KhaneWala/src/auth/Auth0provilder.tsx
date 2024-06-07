@@ -40,6 +40,7 @@ navigate('/auth-callback');
 redirect_uri:redirectUri,
 audience:audience
   }}
+  cacheLocation='localstorage'
   onRedirectCallback={onRedirect}
   >
     {children}

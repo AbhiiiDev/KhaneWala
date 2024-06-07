@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation } from "react-query";
 
+import {toast} from 'sonner'
 
 const BASE_URL=import.meta.env.VITE_BASE_URL;
 
@@ -52,25 +53,55 @@ type CreateUser={
 };};
 
 
-export const UpdateUserRequeset=()=>{
+type UpdatedUser={
+    name:string,
+    addressLine1:string,
+    city:string,
+    country:string
+}
 
+
+
+export const UpdateUserRequeset=()=>{
 const {getAccessTokenSilently}=useAuth0();
 
-    const updateUser=async()=>{
+    const updateUserRequest=async(formData:UpdatedUser)=>{
         const authToken=await getAccessTokenSilently();
 
-        const updatedUser=await fetch(`${BASE_URL}/api/v1/user`,
+        const response=await fetch(`${BASE_URL}/api/v1/user`,
   { 
              method:'PUT',
              headers:{
                 Authorization:`Bearer ${authToken}`,
                 'Content-Type':'application/json'
              },
-             body:JSON.stringify(user)
+             body:JSON.stringify(formData)
+  });
 
-  }
-        )
+  if(!response.ok)
+    {
+        throw new Error('Failed to update User');
+    }
+    return response.json();
+}
+const {mutateAsync:updatedUser,
+    isLoading,
+    isSuccess,
+    isError,
+    reset,
+}=useMutation(updateUserRequest);
 
+if(isError)
+    {
+        toast('Profile not updated');
     }
 
+
+
+if(isSuccess)
+    {
+        toast('profile updated');
+    }
+
+return {updatedUser,isLoading}
 }
