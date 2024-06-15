@@ -1,23 +1,25 @@
 
-import {Routes,Route} from 'react-router-dom';
+import {Routes,Route, useSearchParams} from 'react-router-dom';
 import Layout from './layouts/layout';
 import HomePage from './pages/HomePage';
 import AuthCallBackPage from './pages/AuthCallBackPage';
 import UserProfilePage from './pages/UserProfilePage';
 import ProtectedRoute from './auth/ProtectedRoute';
+import { useState } from 'react';
 
 const AppRoutes = () => {
+
+const [isHero,setIsHero]=useState(false);
+
   return (
   <Routes>
-<Route path='/' element={<Layout><HomePage/></Layout>}/>
-
-
+<Route path='/' element={<Layout isHero={true}><HomePage /></Layout>}/>
 <Route path='/auth-callback' element={<AuthCallBackPage/>}/>
 <Route element={<ProtectedRoute/>}>
-<Route path='/userProfile' element={<UserProfilePage/>}/>
+<Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 </Route>
 
-<Route path='*' element={<span>Home page</span>}/>
+<Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>
 
   </Routes>
   )

@@ -4,14 +4,14 @@ import Footer from "@/components/Footer";
 
 type Props = {
   children: React.ReactNode;
+  isHero:boolean;
 };
 
-const layout = ({ children }: Props) => {
+const layout = ({ children,isHero }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
         {/* Fixed Header with higher z-index */}      
-          <Header />
-       
+          <Header showHero={isHero}  />  
       {/* Push content down by the height of the HeroSection */}
       <div className="z-15 mt-[80vh] sm:mt-[100vh] xl:mt-[100vh] container mx-auto ">
         {children}
