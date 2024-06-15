@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import UserRoute from './routes/UserRoute';
+import RestaurantRoute from "./routes/RestaurantRoute";
 import {v2 as cloudinary} from 'cloudinary'
 
 
@@ -29,6 +30,9 @@ app.get("/test", (req, res) => {
 
 
 app.use('/api/v1/user',UserRoute);
+app.use('/api/v1/restaurant',RestaurantRoute)
+
+
 
 app.listen(8000, () => {
   console.log("server working fine on PORT: 8000");
