@@ -7,13 +7,14 @@ type Props = {
   isHero:boolean;
 };
 
+
 const layout = ({ children,isHero }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
         {/* Fixed Header with higher z-index */}      
           <Header showHero={isHero}  />  
       {/* Push content down by the height of the HeroSection */}
-      <div className="z-15 mt-[80vh] sm:mt-[100vh] xl:mt-[100vh] container mx-auto ">
+      <div className={`container mx-auto z-15 ${isHero ? "mt-[80vh] sm:mt-[100vh] xl:mt-[100vh]":""} `}>
         {children}
       </div>
       <Footer />

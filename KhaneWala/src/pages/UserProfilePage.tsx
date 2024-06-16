@@ -1,5 +1,5 @@
 import { UpdateUserRequeset, useGetUserRequest } from '@/api/MyUserApi'
-import UserProfileForm from '@/user-profile-form/UserProfileForm';
+import UserProfileForm from '@/forms/user-profile-form/UserProfileForm';
 
 
 export default function UserProfilePage() {
