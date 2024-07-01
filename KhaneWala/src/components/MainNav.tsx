@@ -13,9 +13,7 @@ const MainNav = () => {
     <div>
 {
 isAuthenticated ? 
-
 <UserMenu/>
-
   :
   <Button onClick={()=> loginWithRedirect()} className='text-black bg-white hover:bg-black hover:text-white text-lg font-bold'>
     LogIn

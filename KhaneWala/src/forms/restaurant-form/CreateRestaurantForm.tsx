@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import LoadingButton from '../../components/LoadingButton';
 import { Button } from '@/components/ui/button';
 import DetailSection from './DetailSection';
-
+import Cuisine from './Cuisine';
 
  
 const RestaurantSchema=z.object({
@@ -47,13 +47,16 @@ export default function CreateRestaurantForm({onSave,title='Manage Restaurant',i
 
 const form=useForm<restaurantFormData>({
     resolver:zodResolver(RestaurantSchema),
+    defaultValues:{
+      cuisine:[]
+    }
 })
 
   return (
  <Form {...form}>
     <form className='space-y-4 bg-gray-50 rounded-lg md:p-10 mt-[35px]' onSubmit={form.handleSubmit(onSave)}>
-
 <DetailSection/>
+<Cuisine/>
     </form>
  </Form>
   )
