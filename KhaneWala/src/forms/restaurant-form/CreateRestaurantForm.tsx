@@ -6,6 +6,10 @@ import LoadingButton from '../../components/LoadingButton';
 import { Button } from '@/components/ui/button';
 import DetailSection from './DetailSection';
 import Cuisine from './Cuisine';
+import MenuSection from './MenuSection';
+import ImageUpload from './ImageUpload';
+import { Restaurant } from '@/types';
+import { useEffect } from 'react';
 
  
 const RestaurantSchema=z.object({
@@ -20,7 +24,7 @@ const RestaurantSchema=z.object({
         required_error: "estimated delivery time is required",
         invalid_type_error: "must be a valid number",
       }),
-      cuisines: z.array(z.string()).nonempty({
+      cuisine: z.array(z.string()).nonempty({
         message: "please select at least one item",
       }),
       menuItems: z.array(
@@ -33,30 +37,78 @@ const RestaurantSchema=z.object({
       imageFile: z.instanceof(File, { message: "image is required" }).optional(),
 })
 
-export type restaurantFormData=z.infer<typeof RestaurantSchema>;
+export type RestaurantFormData=z.infer<typeof RestaurantSchema>;
 
 
 type Props={
-    onSave:(restaurantFormData:restaurantFormData)=> void;
+  restaurant?:Restaurant;
+    onSave:(restaurantFormData:FormData)=> void;
     isLoading:boolean;
     title?:string;
 }
 
 
-export default function CreateRestaurantForm({onSave,title='Manage Restaurant',isLoading}:Props) {
+export default function CreateRestaurantForm({restaurant,onSave,title='Manage Restaurant',isLoading}:Props) {
 
-const form=useForm<restaurantFormData>({
+const form=useForm<RestaurantFormData>({
     resolver:zodResolver(RestaurantSchema),
     defaultValues:{
-      cuisine:[]
+      cuisine:[],
+      menuItems:[{ name:"",price:0
+      }]
     }
 })
 
+
+
+const onSubmit=(formDataJson:RestaurantFormData)=>{
+  const formData=new FormData();
+
+  formData.append('restaurantName',formDataJson.restaurantName);
+  formData.append('city',formDataJson.city);
+  formData.append('country',formDataJson.country);
+
+formData.append('estimatedDeliveryTime',formDataJson.estimatedDeliveryTime.toString());
+
+formData.append('deliveryPrice',formDataJson.deliveryPrice.toString());
+
+  formDataJson.cuisine.forEach((cuisine,index)=>{
+    formData.append(`cuisine[${index}]`,cuisine);
+  })
+  
+formDataJson.menuItems.forEach((menuItem,index)=>{
+  formData.append(`menuItems[${index}][name]`,menuItem.name)
+  formData.append(`menuItems[${index}][price]`,menuItem.price.toString())
+})
+if(formDataJson.imageFile)
+{
+  const file = formDataJson.imageFile;
+  console.log('File type:', typeof formDataJson.imageFile);
+  // Check if the file is indeed a valid File
+  if (file instanceof File) {
+      formData.append('imageFile', file);
+  } else {
+      console.error('imageFile is not a valid File object');
+  }
+}
+onSave(formData)
+}
+
   return (
  <Form {...form}>
-    <form className='space-y-4 bg-gray-50 rounded-lg md:p-10 mt-[35px]' onSubmit={form.handleSubmit(onSave)}>
+    <form className='space-y-4 bg-gray-50 rounded-lg md:p-10 mt-[35px]' onSubmit={form.handleSubmit(onSubmit)}>
 <DetailSection/>
 <Cuisine/>
+<MenuSection/>
+<ImageUpload/>
+
+
+{
+  isLoading ? <LoadingButton/>
+  : <Button type='submit'>
+    Create
+  </Button>
+}
     </form>
  </Form>
   )

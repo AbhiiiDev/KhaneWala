@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import LoadingButton from '../../components/LoadingButton';
 import { Button } from '@/components/ui/button';
+import { User } from '@/types';
 
 const formSchema = z.object({
   email: z.string().optional(),
