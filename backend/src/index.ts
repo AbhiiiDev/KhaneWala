@@ -8,8 +8,9 @@ import {v2 as cloudinary} from 'cloudinary'
 
 
 const app = express();
-app.use(express.json());
-app.use(cors());
+app.use(cors({allowedHeaders:'*'}));
+
+
 
 
 mongoose.connect(process.env.MONGO_URI as string).then(() => {
@@ -31,8 +32,13 @@ app.get("/test", (req, res) => {
   });
 });
 
+
+app.use('/api/v1/restaurant',RestaurantRoute);
+
+
+app.use(express.json({limit:'50MB'}));
 app.use('/api/v1/user',UserRoute);
-app.use('/api/v1/restaurant',RestaurantRoute)
+
 
 
 
