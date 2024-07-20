@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function RestaurantPage() {
 
-// const {restaurant,isLoading:isGetLoading}=useGetRestaurantRequest();
+const {restaurant,isLoading:isGetLoading}=useGetRestaurantRequest();
 const {createRestaurant,isLoading}=useCreateRestaurantRequest();
 
 
@@ -13,6 +13,6 @@ const {createRestaurant,isLoading}=useCreateRestaurantRequest();
 //   return <span>couldn't able to get Current Restaurant</span>
 // }
   return (
-<CreateRestaurantForm  isLoading={isLoading} onSave={createRestaurant}/>
+<CreateRestaurantForm  restaurant={restaurant} isLoading={isLoading} onSave={createRestaurant}/>
   )
 }

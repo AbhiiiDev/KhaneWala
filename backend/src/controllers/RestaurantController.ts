@@ -7,13 +7,13 @@ import mongoose from "mongoose";
 const getRestaurant=async(req:Request,res:Response)=>{
     try {
         const currentRestaurant=await Restaurant.findOne({
-            _id:req.userId
+         user:req.userId
         });
         if(!currentRestaurant)
         {
             return res.status(404).json({message:'Restaurant not found'})
         }
-
+        console.log(currentRestaurant);
         res.json(currentRestaurant);
     } catch (error) {
         res.status(400).json({message:'Error while finding user'})
@@ -63,6 +63,41 @@ try {
 }
 
 
+const updateRestaurant= async(req:Request,res:Response)=>{
+
+
+    const restaurant=await Restaurant.findOne({
+        user:req.userId
+    })
+
+    if(!restaurant)
+    {
+        return res.status(404).json({message:'No Restaurant found'});
+    }
+
+    restaurant.restaurantName = req.body.restaurantName;
+    restaurant.city = req.body.city;
+    restaurant.country = req.body.country;
+    restaurant.deliveryPrice = req.body.deliveryPrice;
+    restaurant.estimatedDeliveryTime = req.body.estimatedDeliveryTime;
+    restaurant.cuisines = req.body.cuisines;
+    restaurant.menuItems = req.body.menuItems;
+    restaurant.lastUpdated = new Date();
+
+
+    if(req.file)
+    {
+        const imageUrl=await uploadImage(req.file as Express.Multer.File);
+        restaurant.imageUrl=imageUrl;
+    }
+
+
+    await restaurant.save();
+    res.status(200).json({message:"Successfully update restaurants"});
+
+}
+
+
 const uploadImage = async (file: Express.Multer.File) => {
     try {
         const base64Image = Buffer.from(file.buffer).toString("base64");
@@ -74,9 +109,13 @@ const uploadImage = async (file: Express.Multer.File) => {
         console.error('Error uploading image to Cloudinary:', error);
         throw new Error('Image upload failed');
     }
+
+
+
   };
 
 export {
     createRestaurant,
-    getRestaurant
+    getRestaurant,
+    updateRestaurant
 }

@@ -59,7 +59,9 @@ const form=useForm<RestaurantFormData>({
     }
 })
 
-
+useEffect(()=>{
+form.reset(restaurant);
+},[restaurant])
 
 const onSubmit=(formDataJson:RestaurantFormData)=>{
   const formData=new FormData();
@@ -72,10 +74,13 @@ formData.append('estimatedDeliveryTime',formDataJson.estimatedDeliveryTime.toStr
 
 formData.append('deliveryPrice',formDataJson.deliveryPrice.toString());
 
+
+console.log(formDataJson.cuisine);
+
   formDataJson.cuisine.forEach((cuisine,index)=>{
     formData.append(`cuisine[${index}]`,cuisine);
   })
-  
+ 
 formDataJson.menuItems.forEach((menuItem,index)=>{
   formData.append(`menuItems[${index}][name]`,menuItem.name)
   formData.append(`menuItems[${index}][price]`,menuItem.price.toString())
@@ -91,6 +96,7 @@ if(formDataJson.imageFile)
       console.error('imageFile is not a valid File object');
   }
 }
+console.log(formData.getAll('cuisine[0]'));
 onSave(formData)
 }
 
