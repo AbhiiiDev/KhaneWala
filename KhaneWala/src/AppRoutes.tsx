@@ -1,16 +1,15 @@
 
-import {Routes,Route, useSearchParams} from 'react-router-dom';
+import {Routes,Route} from 'react-router-dom';
 import Layout from './layouts/layout';
 import HomePage from './pages/HomePage';
 import AuthCallBackPage from './pages/AuthCallBackPage';
 import UserProfilePage from './pages/UserProfilePage';
 import ProtectedRoute from './auth/ProtectedRoute';
-import { useState } from 'react';
 import RestaurantPage from './pages/RestaurantPage';
 
 const AppRoutes = () => {
 
-const [isHero,setIsHero]=useState(false);
+
 
   return (
   <Routes>
