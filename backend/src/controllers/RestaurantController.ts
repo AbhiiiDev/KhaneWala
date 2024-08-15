@@ -42,7 +42,7 @@ try {
 
         
         const restaurant=new Restaurant(req.body);
-        console.log(restaurant)
+        // console.log(restaurant)
 
         restaurant.imageUrl=imageUrl;
         restaurant.user= new mongoose.Types.ObjectId(req.userId);

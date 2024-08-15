@@ -1,18 +1,22 @@
-import { useCreateRestaurantRequest, useGetRestaurantRequest } from '@/api/MyRestaurantApi'
+import { useCreateRestaurantRequest, useGetRestaurantRequest, useUpdateRestaurantRequest } from '@/api/MyRestaurantApi'
 import CreateRestaurantForm from '@/forms/restaurant-form/CreateRestaurantForm'
-import React from 'react'
 
 export default function RestaurantPage() {
 
 const {restaurant,isLoading:isGetLoading}=useGetRestaurantRequest();
-const {createRestaurant,isLoading}=useCreateRestaurantRequest();
+const {createRestaurant,isLoading:isCreateLoading}=useCreateRestaurantRequest();
+const {updateRestaurant,isLoading:isUpdateLoading}=useUpdateRestaurantRequest();
 
+let isEditing=false;
+if(restaurant){
+  isEditing=true;
+}
+else
+isEditing=false;
 
-// if(!restaurant)
-// {
-//   return <span>couldn't able to get Current Restaurant</span>
-// }
+console.log(isEditing)
+
   return (
-<CreateRestaurantForm  restaurant={restaurant} isLoading={isLoading} onSave={createRestaurant}/>
+<CreateRestaurantForm  restaurant={restaurant} isLoading={isEditing? isUpdateLoading:isCreateLoading} onSave={isEditing? updateRestaurant:createRestaurant}/>
   )
 }

@@ -56,6 +56,8 @@ const {getAccessTokenSilently}=useAuth0();
             }
         );
 
+        console.log(response);
+
         if(!response.ok){
             throw new Error('Failed to create restaurant'); 
         }
@@ -83,4 +85,41 @@ const {getAccessTokenSilently}=useAuth0();
  
   
 
+}
+
+export const useUpdateRestaurantRequest=()=>{
+    const {getAccessTokenSilently}=useAuth0();
+
+    const updateRestaurantRequest=async(restaurantFormData:FormData) =>{
+        const authToken=await getAccessTokenSilently();
+const response=await fetch(`${BASE_URL}/api/v1/restaurant`,
+    {
+        method:"PUT",
+        headers:{
+            Authorization:  `Bearer ${authToken}`,
+        },
+        body:restaurantFormData
+    }
+);
+
+if(!response.ok){
+    throw new Error('failed to update restaurnat');
+}
+
+return response.json();
+    };
+
+    const {mutateAsync:updateRestaurant,isError,isLoading,isSuccess}=useMutation(updateRestaurantRequest);
+
+
+    if(isSuccess){
+        toast.success('restaurant updated');
+    }
+    if(isError){
+        toast.error(error.toString());
+    }
+
+    return{
+        updateRestaurant,isLoading
+    }
 }
