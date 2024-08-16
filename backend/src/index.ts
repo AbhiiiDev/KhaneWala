@@ -5,7 +5,7 @@ import mongoose,{ConnectOptions} from "mongoose";
 import UserRoute from './routes/UserRoute';
 import RestaurantRoute from "./routes/RestaurantRoute";
 import {v2 as cloudinary} from 'cloudinary'
-
+import RestaurantSearchRoute from './routes/RestaurantSearchRoute';
 
 const app = express();
 app.use(cors({allowedHeaders:'*'}));
@@ -38,6 +38,7 @@ app.use('/api/v1/restaurant',RestaurantRoute);
 
 app.use(express.json({limit:'50MB'}));
 app.use('/api/v1/user',UserRoute);
+app.use('/api/restaurant',RestaurantSearchRoute);
 
 
 

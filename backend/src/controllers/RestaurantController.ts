@@ -31,7 +31,7 @@ try {
     }
  
     const existingRestaurant=await Restaurant.findOne({user:req.userId});
-    console.log(existingRestaurant)
+    // console.log(existingRestaurant)
     if(existingRestaurant)
         {
             return res.status(409).json({message:"Restaurant already exists"});
