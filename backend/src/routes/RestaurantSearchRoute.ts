@@ -12,7 +12,7 @@ router.get('/:restaurantId',param('restaurantId').notEmpty().trim().isString().w
 
 //route to search the restaurant from search bar, along with filters and sortings
 
-router.post('/search/:city',param('city').notEmpty().isString().trim().withMessage("city parameter must be valid string"),RestaurantSearchController.searchRestaurant)
+router.get('/search/:city',param('city').notEmpty().isString().trim().withMessage("city parameter must be valid string"),RestaurantSearchController.searchRestaurant)
 
 
 export default router;

@@ -51,6 +51,7 @@ const searchRestaurant=async(req:Request,res:Response)=>{
         });
       }
 
+      //query to search by cuisines filter
       if(selectedCuisine)
       {
         const cuisineArray=selectedCuisine.split(",").map((cuisine)=>new RegExp(cuisine,"i"));
@@ -61,6 +62,8 @@ const searchRestaurant=async(req:Request,res:Response)=>{
       {
         const searchRegex=new RegExp(searchQuery,"i");
 
+        //search through either name of restaurant or cuisines  
+        // mongodb query for OR method
         query["$or"]=[
             {restaurantName:searchRegex},
             {cuisines:{$in:[searchRegex]}}
