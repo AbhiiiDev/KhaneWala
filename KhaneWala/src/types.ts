@@ -27,3 +27,13 @@ export type User = {
     imageUrl: string;
     lastUpdated: string;
   };
+
+  export type Results={
+    data:Restaurant[];
+    pagination:{
+      total:number;
+      page:number;
+      pages:number;
+
+    }
+  }

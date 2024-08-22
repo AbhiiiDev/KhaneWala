@@ -5,7 +5,7 @@ import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 type Props={
   cuisine:string;
-  field: ControllerRenderProps<FieldValues, "cuisine">;
+  field: ControllerRenderProps<FieldValues, "cuisines">;
 }
 
 export default function CuisineCheckbox({cuisine,field}:Props) {
@@ -19,6 +19,7 @@ export default function CuisineCheckbox({cuisine,field}:Props) {
   onCheckedChange={(checked)=>{
     if(checked)
       {
+        console.log(cuisine+'checked')
         field.onChange([...field.value,cuisine])
       }
       else {

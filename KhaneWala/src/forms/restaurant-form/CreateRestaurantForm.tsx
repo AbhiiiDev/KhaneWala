@@ -5,11 +5,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import LoadingButton from '../../components/LoadingButton';
 import { Button } from '@/components/ui/button';
 import DetailSection from './DetailSection';
-import Cuisine from './Cuisine';
 import MenuSection from './MenuSection';
 import ImageUpload from './ImageUpload';
 import { Restaurant } from '@/types';
 import { useEffect } from 'react';
+import Cuisine from './Cuisine';
 
  
 const RestaurantSchema=z.object({
@@ -24,7 +24,7 @@ const RestaurantSchema=z.object({
         required_error: "estimated delivery time is required",
         invalid_type_error: "must be a valid number",
       }),
-      cuisine: z.array(z.string()).nonempty({
+      cuisines: z.array(z.string()).nonempty({
         message: "please select at least one item",
       }),
       menuItems: z.array(
@@ -53,7 +53,7 @@ export default function CreateRestaurantForm({restaurant,onSave,title='Manage Re
 const form=useForm<RestaurantFormData>({
     resolver:zodResolver(RestaurantSchema),
     defaultValues:{
-      cuisine:[],
+      cuisines:[],
       menuItems:[{ name:"",price:0
       }]
     }
@@ -75,10 +75,10 @@ formData.append('estimatedDeliveryTime',formDataJson.estimatedDeliveryTime.toStr
 formData.append('deliveryPrice',formDataJson.deliveryPrice.toString());
 
 
-console.log(formDataJson.cuisine);
+console.log(formDataJson.cuisines);
 
-  formDataJson.cuisine.forEach((cuisine,index)=>{
-    formData.append(`cuisine[${index}]`,cuisine);
+  formDataJson.cuisines.forEach((cuisine,index)=>{
+    formData.append(`cuisines[${index}]`,cuisine);
   })
  
 formDataJson.menuItems.forEach((menuItem,index)=>{
@@ -96,7 +96,7 @@ if(formDataJson.imageFile)
       console.error('imageFile is not a valid File object');
   }
 }
-console.log(formData.getAll('cuisine[0]'));
+console.log(formData.getAll('cuisines[0]'));
 onSave(formData)
 }
 
