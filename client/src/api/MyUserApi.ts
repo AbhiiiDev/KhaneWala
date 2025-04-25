@@ -62,11 +62,12 @@ type CreateUser={
 
  export const useCreateUser =()=>
     {
-
+console.log('inside create user hook')
         const {getAccessTokenSilently}=useAuth0();
         const createUserRequest= async (user:CreateUser)=>{
-
+            
             const authToken=await getAccessTokenSilently();
+            console.log('auth token',authToken)
 
             const response=await fetch(`${BASE_URL}/api/v1/user`,
                 {

@@ -8,7 +8,6 @@ export default function HomePage() {
 
 
   const handleSearchSubmit = (searchFormValue: SearchForm) => {
-    console.log(searchFormValue.searchQuery)
     navigate(`/search/${searchFormValue.searchQuery}`);
   };
 

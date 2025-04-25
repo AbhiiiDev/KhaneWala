@@ -11,7 +11,8 @@ if(isLoading)
     return null;
 
 if(isAuthenticated)
-    return(<Outlet/>)
-
+  return(<Outlet/>)
   return <Navigate to='/' replace/>
+  
+
 }

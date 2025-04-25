@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import  { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { z } from 'zod'
 import { Form, FormControl, FormField, FormItem } from './ui/form';
@@ -19,7 +18,7 @@ export type searchForm= z.infer<typeof formSchema>;
 
 type Props={
     searchQuery?: string;
-    onSubmit?:(formData:searchForm)=>void;
+    onSubmit:(formData:searchForm)=>void;
     onReset?: ()=>void;
     placeHolder:string;
 }
@@ -33,8 +32,6 @@ export default function SearchBar({onSubmit,onReset,placeHolder,searchQuery}:Pro
             searchQuery
         }
     })
-
-    
 
         const handleReset=()=>{
             form.reset({

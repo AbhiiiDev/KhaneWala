@@ -18,8 +18,8 @@ export default function UserMenu() {
   return (
   <DropdownMenu>
     <DropdownMenuTrigger className="flex gap-1 hover:text-orange-700">
-<CircleUserRound className="text-black hover:text-orange-700"/>
-{user?.name}
+<CircleUserRound className="text-white hover:text-orange-700"/>
+ <p className="text-white hover:text-orange-700">{user?.name}</p>
     </DropdownMenuTrigger>
     <DropdownMenuContent>
     <DropdownMenuItem>

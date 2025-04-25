@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const MainNav = () => {
 
 
-  const {loginWithRedirect,isAuthenticated,logout,}=useAuth0();
+  const {loginWithRedirect,isAuthenticated}=useAuth0();
 
   return (
     <div>
@@ -15,7 +15,7 @@ const MainNav = () => {
 isAuthenticated ? 
 <UserMenu/>
   :
-  <Button onClick={()=> loginWithRedirect()} className='text-black bg-white hover:bg-black hover:text-white text-lg font-bold'>
+  <Button onClick={async()=> await loginWithRedirect()} className='text-black bg-white hover:bg-black hover:text-white text-lg font-bold'>
     LogIn
   </Button> 
 
