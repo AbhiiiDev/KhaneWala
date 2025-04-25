@@ -2,13 +2,12 @@ import { Request,Response } from "express";
 import Restaurant from "../models/Restaurant";
 
 const getRestaurant=async (req:Request,res:Response)=>{
-try {
-    const restaurantCity=req.params.restaurantId;
-    console.log(restaurantCity);
+    try {
+    console.log('inside get resutant')
+    const restaurantId=req.params.restaurantId;
+    console.log(restaurantId);
 
-    const restaurant=await Restaurant.find({
-        city:new RegExp(restaurantCity,'i')
-    });
+    const restaurant=await Restaurant.findById(restaurantId);
     console.log(restaurant)
 
     if(!restaurant){
@@ -18,6 +17,7 @@ try {
     return res.json(restaurant);
 
 } catch (error) {
+    console.log('outside get restaurant')
     console.log(error);
     res.status(400).json({message:"something went wrong while searching restaurant through city"});
 }
@@ -27,7 +27,7 @@ try {
 const searchRestaurant=async(req:Request,res:Response)=>{
     try {
       const city=req.params.city;
-
+console.log('city is: ',city);
       const searchQuery=(req.query.searchQuery as string )|| "";
       const selectedCuisine=(req.query.selectedCuisine as string) || "";
       const sortOptions=(req.query.sortOptions as string) || "lastUpdated";

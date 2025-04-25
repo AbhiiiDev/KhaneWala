@@ -7,8 +7,17 @@ const router=express.Router();
 
 // route for "api/v1/restaurant/Lucknow" - city bases search for particular city restaurants
 
-
-router.get('/:restaurantId',param('restaurantId').notEmpty().trim().isString().withMessage('restaurantId parameter must be valid string'),RestaurantSearchController.getRestaurant);
+console.log('before city search route')
+router.get(
+    "/:restaurantId",
+    param("restaurantId")
+      .isString()
+      .trim()
+      .notEmpty()
+      .withMessage("RestaurantId paramenter must be a valid string"),
+      RestaurantSearchController.getRestaurant
+  );
+console.log('after city search route')
 
 //route to search the restaurant from search bar, along with filters and sortings
 
