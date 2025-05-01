@@ -29,12 +29,12 @@ const searchRestaurant=async(req:Request,res:Response)=>{
       const city=req.params.city;
 console.log('city is: ',city);
       const searchQuery=(req.query.searchQuery as string )|| "";
-      const selectedCuisine=(req.query.selectedCuisine as string) || "";
+      const selectedCuisines=(req.query.selectedCuisines as string) || "";
       const sortOptions=(req.query.sortOptions as string) || "lastUpdated";
       const page= parseInt(req.query.selectedCuisine as string) || 1;
 
       let query:any= {};
-
+      console.log('cuis',selectedCuisines);
       query['city']=new RegExp(city,'i');
 
       const cityCheck=await Restaurant.countDocuments(query);
@@ -52,11 +52,11 @@ console.log('city is: ',city);
       }
 
       //query to search by cuisines filter
-      if(selectedCuisine)
+      if(selectedCuisines)
       {
-        const cuisineArray=selectedCuisine.split(",").map((cuisine)=>new RegExp(cuisine,"i"));
+        const cuisineArray=selectedCuisines.split(",").map((cuisine)=>new RegExp(cuisine,"i"));
 
-        query['cuisine']={$all:cuisineArray};
+        query['cuisines']={$in:cuisineArray};
       }
       if(searchQuery)
       {
