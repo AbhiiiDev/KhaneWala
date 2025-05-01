@@ -19,7 +19,6 @@ export default function CuisineCheckbox({cuisine,field}:Props) {
   onCheckedChange={(checked)=>{
     if(checked)
       {
-        console.log(cuisine+'checked')
         field.onChange([...field.value,cuisine])
       }
       else {

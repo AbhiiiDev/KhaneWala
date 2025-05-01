@@ -56,7 +56,6 @@ const {getAccessTokenSilently}=useAuth0();
             }
         );
 
-        console.log(response);
 
         if(!response.ok){
             throw new Error('Failed to create restaurant'); 

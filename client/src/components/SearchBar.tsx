@@ -75,6 +75,7 @@ export default function SearchBar({onSubmit,onReset,placeHolder,searchQuery}:Pro
         )}
         />
         <Button
+        size="sm"
         onClick={handleReset}
         type='button'
         variant='outline'
@@ -83,7 +84,8 @@ export default function SearchBar({onSubmit,onReset,placeHolder,searchQuery}:Pro
             Reset
       </Button>
 
-      <Button type='submit' className='rounded-full bg-orange-500'>Search</Button>
+      <Button size="sm"
+ type='submit' className='rounded-full bg-orange-500'>Search</Button>
         </form>
     </Form>
   )

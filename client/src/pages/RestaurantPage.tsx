@@ -13,9 +13,6 @@ if(restaurant){
 }
 else
 isEditing=false;
-
-console.log(isEditing)
-
   return (
 <CreateRestaurantForm  restaurant={restaurant} isLoading={isEditing? isUpdateLoading:isCreateLoading} onSave={isEditing? updateRestaurant:createRestaurant}/>
   )

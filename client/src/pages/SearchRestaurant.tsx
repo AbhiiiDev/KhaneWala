@@ -1,6 +1,6 @@
 import SearchResultInfo from "@/components/SearchResultInfo";
 import { useParams } from "react-router-dom";
-import { useGetRestaurant } from "@/api/RestaurantSearchApi";
+import { useGetRestaurant, useSearchRestaurants } from "@/api/RestaurantSearchApi";
 import RestaurantSearchCard from "@/components/RestaurantSearchCard";
 import SearchBar, { searchForm } from "@/components/SearchBar";
 import { useState } from "react";
@@ -15,19 +15,24 @@ export type SearchState={
 export default function SearchRestaurantCity() {
   const { city } = useParams();
   const { results, isLoading } = useGetRestaurant(city);
-
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
-
+  
+  
   const [searchState, setSearchState] = useState<SearchState>({
     searchQuery: "",
     page: 1,
     selectedCuisines: [],
     sortOptions: "bestMatch",
   });
-
+  
+  const {results:filteredRestaurants}=useSearchRestaurants(searchState,city);
   if (isLoading) {
     <span>Loading....</span>;
+  }
+  if(!results?.data|| !city){
+    return <div className="flex justify-center items-center min-h-screen">
+<h2>Sorry! No restaurants found !</h2>
+    </div>
   }
 
   const setSearchQuery = (searchFormData: searchForm) => {
@@ -43,7 +48,14 @@ export default function SearchRestaurantCity() {
       page: 1,
     }));
   };
-
+  
+  const searchReset=()=>{
+    setSearchState((prevState)=>({
+      ...prevState,
+      searchQuery:"",
+      page:1,
+    }))
+  }
   return (
     <div className="mt-32 mb-8 grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
       <div id="cuisine_list">
@@ -61,16 +73,18 @@ export default function SearchRestaurantCity() {
           <SearchBar
             placeHolder="search by cuisine or name"
             onSubmit={setSearchQuery}
+            searchQuery={searchState.searchQuery}
+            onReset={searchReset}
+
           />
         </div>
         <div className="flex justify-between">
-          <SearchResultInfo total={results?.data?.length} city={city} />
+          <SearchResultInfo total={filteredRestaurants?.data?.length} city={city} />
           sort options
         </div>
-        <div>
+        <div className="flex gap-3 flex-col">
           {/* Search Result Card */}
-
-          {results?.data.map((restaurant, index) => (
+          {filteredRestaurants?.data.map((restaurant, index) => (
             <RestaurantSearchCard key={index} restaurant={restaurant} />
           ))}
         </div>

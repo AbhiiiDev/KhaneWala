@@ -18,17 +18,17 @@ export default function UserMenu() {
   return (
   <DropdownMenu>
     <DropdownMenuTrigger className="flex gap-1 hover:text-orange-700">
-<CircleUserRound className="text-white hover:text-orange-700"/>
- <p className="text-white hover:text-orange-700">{user?.name}</p>
+<CircleUserRound className=" text-orange-400"/>
+ <p className=" text-orange-400">{user?.name}</p>
     </DropdownMenuTrigger>
     <DropdownMenuContent>
     <DropdownMenuItem>
-          <Link to="/userProfile" className="font-bold hover:text-orange-500 hover:bg-orange-200">
+          <Link to="/userProfile" className="font-bold text-orange-500 hover:bg-orange-200">
             User Profile
           </Link>
         </DropdownMenuItem>
     <DropdownMenuItem>
-          <Link to="/manageRestaurant" className="font-bold hover:text-orange-500 hover:bg-orange-200">
+          <Link to="/manageRestaurant" className="font-bold text-orange-500 hover:bg-orange-200">
            Manange Restaurant
           </Link>
         </DropdownMenuItem>
