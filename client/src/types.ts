@@ -45,3 +45,12 @@ export type User = {
       pages: number;
     };
   };
+
+export type CartItem= MenuItem & {
+  quantity:number;
+}
+
+export type CartState = {
+  restaurantId: string | null;
+  items: CartItem[];
+};

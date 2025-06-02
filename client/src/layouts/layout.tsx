@@ -10,7 +10,7 @@ type Props = {
 
 const layout = ({ children,isHero }: Props) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className=" flex flex-col min-h-screen">
         {/* Fixed Header with higher z-index */}      
           <Header showHero={isHero}  />  
       {/* Push content down by the height of the HeroSection */}

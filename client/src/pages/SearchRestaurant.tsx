@@ -1,10 +1,11 @@
 import SearchResultInfo from "@/components/SearchResultInfo";
 import { useParams } from "react-router-dom";
-import { useGetRestaurant, useSearchRestaurants } from "@/api/RestaurantSearchApi";
+import { useSearchRestaurants } from "@/api/RestaurantSearchApi";
 import RestaurantSearchCard from "@/components/RestaurantSearchCard";
 import SearchBar, { searchForm } from "@/components/SearchBar";
 import { useState } from "react";
 import CuisineFilter from "@/components/CuisineFilter";
+import { LoadingState } from "@/components/Loader";
 
 export type SearchState={
   searchQuery: string,
@@ -14,7 +15,6 @@ export type SearchState={
 }
 export default function SearchRestaurantCity() {
   const { city } = useParams();
-  const { results, isLoading } = useGetRestaurant(city);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   
   
@@ -25,9 +25,9 @@ export default function SearchRestaurantCity() {
     sortOptions: "bestMatch",
   });
   
-  const {results:filteredRestaurants}=useSearchRestaurants(searchState,city);
+  const { results, isLoading } = useSearchRestaurants(searchState,city);
   if (isLoading) {
-    <span>Loading....</span>;
+ return <LoadingState/>
   }
   if(!results?.data|| !city){
     return <div className="flex justify-center items-center min-h-screen">
@@ -79,12 +79,12 @@ export default function SearchRestaurantCity() {
           />
         </div>
         <div className="flex justify-between">
-          <SearchResultInfo total={filteredRestaurants?.data?.length} city={city} />
+          <SearchResultInfo total={results?.data?.length} city={city} />
           sort options
         </div>
         <div className="flex gap-3 flex-col">
           {/* Search Result Card */}
-          {filteredRestaurants?.data.map((restaurant, index) => (
+          {results?.data.map((restaurant, index) => (
             <RestaurantSearchCard key={index} restaurant={restaurant} />
           ))}
         </div>

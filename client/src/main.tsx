@@ -6,6 +6,8 @@ import AppRoutes from './AppRoutes.tsx'
 import './global.css'
 import Auth0provider from './auth/Auth0provider.tsx';
 import { Toaster } from 'sonner';
+import { Provider } from 'react-redux';
+import { store } from './app/store.ts';
 
 const queryClient=new QueryClient({
 defaultOptions:{
@@ -17,6 +19,7 @@ defaultOptions:{
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <Provider store={store}>
     <Router>
       <QueryClientProvider client={queryClient}>
       <Auth0provider>
@@ -25,5 +28,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </Auth0provider>
       </QueryClientProvider>
     </Router>
+    </Provider>
   </React.StrictMode>,
 )

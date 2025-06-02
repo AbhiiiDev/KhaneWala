@@ -31,6 +31,8 @@ const RestaurantSchema=z.object({
         z.object({
           name: z.string().min(1, "name is required"),
           price: z.coerce.number().min(1, "price is required"),
+          // imageUrl: z.string().optional(),
+          // imageFile: z.instanceof(File, { message: "image is required" }).optional(),
         })
       ),
       imageUrl: z.string().optional(),
@@ -54,7 +56,7 @@ const form=useForm<RestaurantFormData>({
     resolver:zodResolver(RestaurantSchema),
     defaultValues:{
       cuisines:[],
-      menuItems:[{ name:"",price:0
+      menuItems:[{ name:"",price:0,imageFile:undefined
       }]
     }
 })
@@ -64,6 +66,7 @@ form.reset(restaurant);
 },[restaurant])
 
 const onSubmit=(formDataJson:RestaurantFormData)=>{
+  console.log('button clicked')
   const formData=new FormData();
 
   formData.append('restaurantName',formDataJson.restaurantName);
@@ -84,6 +87,18 @@ console.log(formDataJson.cuisines);
 formDataJson.menuItems.forEach((menuItem,index)=>{
   formData.append(`menuItems[${index}][name]`,menuItem.name)
   formData.append(`menuItems[${index}][price]`,menuItem.price.toString())
+//   if(menuItem.imageFile)
+//    { 
+//     const file = menuItem.imageFile;
+//   console.log('File type:', typeof formDataJson.imageFile);
+//   // Check if the file is indeed a valid File
+//   if (file instanceof File) {
+//     formData.append('menuItemsImages', menuItem.imageFile);}
+//     else {
+//       console.error('imageFile is not a valid File object');
+//   }
+// }
+ 
 })
 if(formDataJson.imageFile)
 {
@@ -107,7 +122,6 @@ onSave(formData)
 <Cuisine/>
 <MenuSection/>
 <ImageUpload/>
-
 
 {
   isLoading ? <LoadingButton/>

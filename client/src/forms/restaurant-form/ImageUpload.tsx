@@ -13,14 +13,8 @@ const {control,watch}=useFormContext();
         <div className='space-y-3'>
         <h1 className='font-bold text-2xl'>Image</h1>
     <FormDescription>
-        Add an image to be displayed  on your restaurant listing in search result
+ Add an image to be displayed  on your restaurant listing in search result
     </FormDescription>
-    </div>
-
-    <div>
-{
-    
-}   
     </div>
     <FormField
     control={control}

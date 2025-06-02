@@ -63,7 +63,7 @@ const {getAccessTokenSilently}=useAuth0();
         return response.json();
     };
     const {mutateAsync:createRestaurant,
-        isLoading,isError,isSuccess,error
+        isLoading,isError,isSuccess
     }=useMutation(createRestaurantRequest);
 
     if(isSuccess)
@@ -73,7 +73,7 @@ const {getAccessTokenSilently}=useAuth0();
 
             if(isError)
     {
-    toast.error(error.toString());
+    toast.error('error occured while upadting restaurant');
 }
 
 

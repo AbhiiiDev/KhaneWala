@@ -35,7 +35,7 @@ const {fields,append,remove}=useFieldArray({
     )}
     >
     </FormField>
-    <Button type="button" onClick={() => append({ name: "", price: "" })}>
+    <Button type="button" onClick={() => append({ name: "", price: "",imageFile:null })}>
         Add Menu Item
       </Button>
 

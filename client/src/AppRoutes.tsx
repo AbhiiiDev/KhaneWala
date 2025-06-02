@@ -7,6 +7,8 @@ import UserProfilePage from './pages/UserProfilePage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import RestaurantPage from './pages/RestaurantPage';
 import SearchRestaurant from './pages/SearchRestaurant';
+import { MenuPage } from './pages/MenuPage';
+import CartPage from './pages/CartPage';
 
 const AppRoutes = () => {
 
@@ -20,8 +22,10 @@ const AppRoutes = () => {
 
 <Route element={<ProtectedRoute/>}> 
 
+<Route path='/cart' element={<Layout isHero={false}><CartPage /></Layout>}/>
 <Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
+<Route path='/detail/:restaurantId' element={<Layout isHero={false}><MenuPage/></Layout>}/>
 </Route>
 
 <Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>

@@ -38,6 +38,27 @@ export default function MenuItem({index,removeMenuItem}:Props) {
         </FormControl>
     </FormItem>
   )}/>
+  <div>
+        <div className='space-y-3'>
+        <h1 className='font-bold text-2xl'>Image</h1>
+    </div>
+    <FormField
+    control={control}
+    name={`menuItems.${index}.imageFile`}
+    render={({field})=>(
+        <FormItem>
+        <FormControl>
+            <Input
+            className='cursor-pointer'
+            type='file'
+            accept='.jpg .jpeg .png'
+            onChange={(event)=>field.onChange(event.target.files ? event.target.files[0]: null)}
+            />
+        </FormControl>
+    </FormItem>
+  )}
+   /> 
+  </div>
   <Button onClick={removeMenuItem} className='bg-red-500 max-h-fit'>
     Remove
   </Button>
