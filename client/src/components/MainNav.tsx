@@ -11,8 +11,9 @@ const MainNav = () => {
 
 
   const {loginWithRedirect,isAuthenticated}=useAuth0();
-   const items=useAppSelector(state=>state.cart.items);
-       const itemsCount=items.length;
+   const itemsCount=useAppSelector((state) =>
+    state.cart.items.reduce((total, item) =>total+ item.quantity, 0)
+  );
   return (
     <div>
 {

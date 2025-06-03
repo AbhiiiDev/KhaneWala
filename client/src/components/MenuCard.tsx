@@ -1,0 +1,47 @@
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { Card } from './ui/card'
+import { MenuItem } from '@/types'
+import { addToCart, decreaseQuantity, setRestaurant } from '@/features/cart/cartSlice';
+import { Button } from "@/components/ui/button";
+import { IndianRupee } from "lucide-react";
+
+type Props={
+    item:MenuItem;
+    restaurantId:string;
+}
+const MenuCard = ({item,restaurantId}:Props) => {
+    const dispatch=useAppDispatch();
+        const handleAddtoCart=()=>{
+            dispatch(setRestaurant(restaurantId));
+            dispatch(addToCart(item))
+        }
+        const handleDecrease=()=>{
+            dispatch(decreaseQuantity(item._id))
+        }
+        const quantity=useAppSelector((state)=>{
+            const found=state.cart.items.find((i)=>i._id===item._id);
+            return found?.quantity || 0;
+        })
+  return (
+    <Card className="w-[30%] h-32">
+    <div className="flex-col p-4 text-base font-semibold w-52">
+    <p className="text-gray-600">{item.name}</p>
+    <p className="flex items-center"> <IndianRupee color="green" size={17}/> {item.price}</p>
+    </div>
+    <div className="flex justify-center ">
+    {quantity === 0 ? (
+        <Button variant="outline" className="w-1/4 text-orange-500 font-bold text-lg" onClick={handleAddtoCart}>Add</Button>
+      ) : (
+        <div className="flex items-center gap-2">
+          <Button variant="outline" className="text-orange-500" onClick={handleDecrease}>−</Button>
+          <span>{quantity}</span>
+          <Button variant="outline" className="text-orange-500" onClick={handleAddtoCart}>+</Button>
+        </div>
+      )}
+   
+    </div>
+    </Card>
+  )
+}
+
+export default MenuCard

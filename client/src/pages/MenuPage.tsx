@@ -3,13 +3,12 @@ import { LoadingState } from "@/components/Loader";
 import { useParams } from "react-router-dom"
 import { Card } from "@/components/ui/card";
 import { IndianRupee, WatchIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { addToCart, setRestaurant } from "@/features/cart/cartSlice";
+import MenuCard from "@/components/MenuCard";
+
 export const MenuPage=()=>
 {
-    const items=useAppSelector(state=>state.cart.items);
-    const dispatch=useAppDispatch();
+    // const items=useAppSelector(state=>state.cart.items);
+   
     const {restaurantId}=useParams();
     const {restaurant,isLoading}= useGetRestaurant(restaurantId);
     console.log(restaurant);
@@ -38,20 +37,8 @@ return(
       <div className="mt-4 w-full p-2 sm:flex flex-col items-center gap-2 sm:justify-center">
        {
 restaurant?.menuItems.map((item)=>{
-    const handleAddtoCart=()=>{
-        dispatch(setRestaurant(restaurantId));
-        dispatch(addToCart(item))
-    }
     return (
-        <Card className="w-[30%] h-32">
-    <div className="flex-col p-4 text-base font-semibold w-52">
-    <p className="text-gray-600">{item.name}</p>
-    <p className="flex items-center"> <IndianRupee color="green" size={17}/> {item.price}</p>
-    </div>
-    <div className="flex justify-center ">
-    <Button variant="outline" className="w-1/4 text-orange-500 font-bold text-lg" onClick={handleAddtoCart}>Add</Button>
-    </div>
-    </Card>
+       <MenuCard item={item} restaurantId={restaurantId}/>
     )
 })
        }

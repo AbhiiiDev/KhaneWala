@@ -31,9 +31,20 @@ export const cartSlice=createSlice({
                     quantity:1
                 })
             }
+        },
+        decreaseQuantity(state,action:PayloadAction<string>){
+            const item=action.payload;
+            const existingItem = state.items.find((i) => i._id === action.payload);
+            if (existingItem) {
+              if (existingItem.quantity === 1) {
+                state.items = state.items.filter((i) => i._id !== item);
+              } else {
+                existingItem.quantity -= 1;
+              }
+            }
         }
     }
 })
-export const {setRestaurant,addToCart}=cartSlice.actions;
+export const {setRestaurant,addToCart,decreaseQuantity}=cartSlice.actions;
 
 export default cartSlice.reducer;

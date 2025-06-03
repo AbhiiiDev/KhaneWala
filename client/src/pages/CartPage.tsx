@@ -1,5 +1,4 @@
 import { useAppSelector } from '@/app/hooks'
-import React from 'react'
 
 const CartPage = () => {
     const items=useAppSelector(state=>state.cart.items);
