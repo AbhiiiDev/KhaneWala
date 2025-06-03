@@ -81,7 +81,7 @@ const updateRestaurant= async(req:Request,res:Response)=>{
     restaurant.deliveryPrice = req.body.deliveryPrice;
     restaurant.estimatedDeliveryTime = req.body.estimatedDeliveryTime;
     restaurant.cuisines = req.body.cuisines;
-    restaurant.menuItems = req.body.menuItems;
+    restaurant.menuItems=req.body.menuItems;
     restaurant.lastUpdated = new Date();
 
 
@@ -91,6 +91,11 @@ const updateRestaurant= async(req:Request,res:Response)=>{
         restaurant.imageUrl=imageUrl;
     }
 
+    if (req.body.menuItems && Array.isArray(req.body.menuItems)) {
+        restaurant.menuItems = req.body.menuItems.map((item: any) => ({
+            name: item.name,
+            price: item.price,        }));
+    }
 
     await restaurant.save();
     res.status(200).json({message:"Successfully update restaurants"});

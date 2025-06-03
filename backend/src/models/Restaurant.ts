@@ -1,6 +1,6 @@
 import mongoose, { InferSchemaType } from "mongoose";
 
-const menuItemSchema=new mongoose.Schema({
+export const menuItemSchema=new mongoose.Schema({
 _id:{
     type:mongoose.Schema.Types.ObjectId,
     required:true,
@@ -8,6 +8,7 @@ _id:{
 },
 name:{type:String,required:true},
 price:{type:Number,required:true},
+imageUrl: { type: String },
 });
 
 export type MenuItemType=InferSchemaType<typeof menuItemSchema>;

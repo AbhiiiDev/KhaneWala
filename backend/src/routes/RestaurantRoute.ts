@@ -16,8 +16,14 @@ const upload=multer({
 })
 
 router.get('/',jwtCheck,jwtParse,getRestaurant)
-router.post('/',upload.single('imageFile'),jwtCheck,jwtParse,createRestaurant);
-router.put('/',upload.single('imageFile'),jwtCheck,jwtParse,updateRestaurant);
+router.post('/',upload.fields([
+    { name: 'imageFile', maxCount: 1 }, // for restaurant image
+    { name: 'menuItemsImages', maxCount: 20 }, // for menu item images
+  ]),jwtCheck,jwtParse,createRestaurant);
+router.put('/',upload.fields([
+    { name: 'imageFile', maxCount: 1 }, // for restaurant image
+    { name: 'menuItemsImages', maxCount: 20 }, // for menu item images
+  ]),jwtCheck,jwtParse,updateRestaurant);
 
 
 export default router;
