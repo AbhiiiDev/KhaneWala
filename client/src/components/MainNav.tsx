@@ -21,7 +21,7 @@ isAuthenticated ?
 (
   <div className='flex gap-4'>
     <div className='relative'>
-    <Link to='/cart' className='cursor-pointer'>
+    <Link to='/checkout' className='cursor-pointer'>
   <ShoppingCart className='text-orange-500 '/>
     </Link>
   {itemsCount > 0 && (

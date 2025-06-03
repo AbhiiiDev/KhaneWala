@@ -4,6 +4,7 @@ import { MenuItem } from '@/types'
 import { addToCart, decreaseQuantity, setRestaurant } from '@/features/cart/cartSlice';
 import { Button } from "@/components/ui/button";
 import { IndianRupee } from "lucide-react";
+import ButtonCounter from "./ButtonCounter";
 
 type Props={
     item:MenuItem;
@@ -32,11 +33,7 @@ const MenuCard = ({item,restaurantId}:Props) => {
     {quantity === 0 ? (
         <Button variant="outline" className="w-1/4 text-orange-500 font-bold text-lg" onClick={handleAddtoCart}>Add</Button>
       ) : (
-        <div className="flex items-center gap-2">
-          <Button variant="outline" className="text-orange-500" onClick={handleDecrease}>−</Button>
-          <span>{quantity}</span>
-          <Button variant="outline" className="text-orange-500" onClick={handleAddtoCart}>+</Button>
-        </div>
+      <ButtonCounter onClickMinus={handleDecrease} onClickPlus={handleAddtoCart} quantity={quantity}/>
       )}
    
     </div>
