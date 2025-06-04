@@ -51,6 +51,6 @@ export type CartItem= MenuItem & {
 }
 
 export type CartState = {
-  restaurantId: string | null;
+  restaurant: Restaurant | undefined;
   items: CartItem[];
 };

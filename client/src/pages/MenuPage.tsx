@@ -12,9 +12,10 @@ export const MenuPage=()=>
     const {restaurantId}=useParams();
     const {restaurant,isLoading}= useGetRestaurant(restaurantId);
     console.log(restaurant);
+  
     if(isLoading)
         return <LoadingState/>
-
+    
    
 return(
     <>
@@ -38,7 +39,7 @@ return(
        {
 restaurant?.menuItems.map((item)=>{
     return (
-       <MenuCard item={item} restaurantId={restaurantId}/>
+       <MenuCard item={item} restaurant={restaurant}/>
     )
 })
        }

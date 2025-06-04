@@ -9,15 +9,16 @@ type Props = {
   item: CartItem;
 };
 
-const ItemCard = ({ item }: Props) => {
+const CheckoutItemCard = ({ item }: Props) => {
   const quantity = useAppSelector((state) => {
     const found = state.cart.items.find((i) => i._id === item._id);
     return found?.quantity || 0;
   });
-  const restaurantId=useAppSelector((state)=> state.cart.restaurantId);
+  const restaurant=useAppSelector((state)=> state.cart.restaurant);
   const dispatch=useAppDispatch();
           const handleAddtoCart=()=>{
-              dispatch(setRestaurant(restaurantId));
+            if(!restaurant) return;
+              dispatch(setRestaurant(restaurant));
               dispatch(addToCart(item))
           }
           const handleDecrease=()=>{
@@ -43,4 +44,4 @@ const ItemCard = ({ item }: Props) => {
   );
 };
 
-export default ItemCard;
+export default CheckoutItemCard;

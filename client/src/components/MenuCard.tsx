@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Card } from './ui/card'
-import { MenuItem } from '@/types'
+import { MenuItem, Restaurant } from '@/types'
 import { addToCart, decreaseQuantity, setRestaurant } from '@/features/cart/cartSlice';
 import { Button } from "@/components/ui/button";
 import { IndianRupee } from "lucide-react";
@@ -8,12 +8,12 @@ import ButtonCounter from "./ButtonCounter";
 
 type Props={
     item:MenuItem;
-    restaurantId:string;
+    restaurant:Restaurant;
 }
-const MenuCard = ({item,restaurantId}:Props) => {
+const MenuCard = ({item,restaurant}:Props) => {
     const dispatch=useAppDispatch();
         const handleAddtoCart=()=>{
-            dispatch(setRestaurant(restaurantId));
+            dispatch(setRestaurant(restaurant));
             dispatch(addToCart(item))
         }
         const handleDecrease=()=>{

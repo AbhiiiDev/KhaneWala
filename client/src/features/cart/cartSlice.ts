@@ -1,8 +1,8 @@
-import { CartState, MenuItem } from "@/types";
+import { CartState, MenuItem, Restaurant } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState:CartState={
-    restaurantId:null,
+    restaurant:undefined,
     items:[]
 }
 
@@ -10,10 +10,10 @@ export const cartSlice=createSlice({
     name:'Cart',
     initialState,
     reducers:{
-        setRestaurant(state,action: PayloadAction<string>){
-            if(state.restaurantId!== action.payload)
+        setRestaurant(state,action:PayloadAction<Restaurant>){
+            if(state.restaurant?._id!== action.payload._id)
             {
-                state.restaurantId=action.payload;
+                state.restaurant=action.payload;
                 state.items=[];
             }
         },
