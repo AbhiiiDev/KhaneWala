@@ -21,7 +21,7 @@ const Header = ({showHero}:Props) => {
             <div className="container mx-auto flex justify-between items-center flex-wrap">
               <Link
                 to="/"
-                className="text-2xl font-bold tracking-tight text-black"
+                className="text-2xl font-bold tracking-tight text-gray-300"
               >
                 Khane<span className="text-orange-500">Wala.com</span>
               </Link>
