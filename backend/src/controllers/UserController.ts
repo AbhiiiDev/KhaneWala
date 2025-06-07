@@ -45,7 +45,7 @@ const updateUser=async(req:Request,res:Response)=>{
 
 try {
     
-const {name,addressLine1,country,city}=req.body;
+const {name,addressLine1,country,city,state,postalCode}=req.body;
 
 const user=await User.findById(req.userId);
 
@@ -57,6 +57,8 @@ if(!user)
 user.name=name;
 user.addressLine1=addressLine1;
 user.city=city;
+user.state=state;
+user.postalCode=postalCode;
 user.country=country;
 
 await user.save();
