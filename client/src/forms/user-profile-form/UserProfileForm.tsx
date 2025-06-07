@@ -13,6 +13,8 @@ const formSchema = z.object({
   name: z.string().min(1,"name is required"),
   addressLine1: z.string().min(1, "Address Line 1 is required"),
   city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
+  postalCode: z.string().min(1, "Code is required"),
   country: z.string().min(1, "Country is required"),
 });
 
@@ -94,6 +96,30 @@ form.reset(currentUser);
     render={({field}) => (
       <FormItem className='flex-1'>
         <FormLabel>City</FormLabel>
+        <FormControl>
+     <Input {...field} className='bg-white border-2 border-gray-400' />
+        </FormControl>
+      </FormItem>
+    )}
+  />
+  <FormField
+    control={form.control}
+    name="state"
+    render={({field}) => (
+      <FormItem className='flex-1'>
+        <FormLabel>State</FormLabel>
+        <FormControl>
+     <Input {...field} className='bg-white border-2 border-gray-400' />
+        </FormControl>
+      </FormItem>
+    )}
+  />
+  <FormField
+    control={form.control}
+    name="postalCode"
+    render={({field}) => (
+      <FormItem className='flex-1'>
+        <FormLabel>Postal Code</FormLabel>
         <FormControl>
      <Input {...field} className='bg-white border-2 border-gray-400' />
         </FormControl>
