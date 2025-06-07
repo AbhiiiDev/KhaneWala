@@ -9,6 +9,7 @@ import RestaurantPage from './pages/RestaurantPage';
 import SearchRestaurant from './pages/SearchRestaurant';
 import { MenuPage } from './pages/MenuPage';
 import CartPage from './pages/CheckoutPage';
+import SuccessPage from './pages/SuccessPage';
 
 const AppRoutes = () => {
 
@@ -19,15 +20,15 @@ const AppRoutes = () => {
 <Route path='/' element={<Layout isHero={true}><HomePage /></Layout>}/>
 <Route path='/auth-callback' element={<AuthCallBackPage/>}/>
 <Route path='/search/:city' element={<Layout isHero={false}><SearchRestaurant/></Layout>}/>
+<Route path='/detail/:restaurantId' element={<Layout isHero={false}><MenuPage/></Layout>}/>
 
 <Route element={<ProtectedRoute/>}> 
 
 <Route path='/checkout' element={<Layout isHero={false}><CartPage /></Layout>}/>
 <Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
-<Route path='/detail/:restaurantId' element={<Layout isHero={false}><MenuPage/></Layout>}/>
+<Route path='/success' element={<Layout isHero={false}><SuccessPage/></Layout>}/>
 </Route>
-
 <Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>
 
   </Routes>
