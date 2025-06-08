@@ -27,7 +27,7 @@ const AppRoutes = () => {
 <Route path='/checkout' element={<Layout isHero={false}><CartPage /></Layout>}/>
 <Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
-<Route path='/success' element={<Layout isHero={false}><SuccessPage/></Layout>}/>
+<Route path='/success/:orderId' element={<Layout isHero={false}><SuccessPage/></Layout>}/>
 </Route>
 <Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>
 

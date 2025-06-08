@@ -1,4 +1,5 @@
 import { useAppSelector } from '@/app/hooks'
+import { CheckoutButton } from '@/components/CheckoutButton';
 import CheckoutItemCard from '@/components/CheckoutItemCard';
 import { IndianRupee } from 'lucide-react';
 
@@ -36,6 +37,9 @@ const CartPage = () => {
           <span>Payable Total : </span>
             <span className='flex items-center'>      <IndianRupee color="green" size={14}/> {payable} </span></div>
         </div>
+      </div>
+      <div className='mt-4'>
+      <CheckoutButton/>
       </div>
     </div>
   )

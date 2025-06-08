@@ -42,9 +42,13 @@ export const cartSlice=createSlice({
                 existingItem.quantity -= 1;
               }
             }
+        },
+        clearCart(state){
+            state.items=[],
+            state.restaurant=undefined
         }
     }
 })
-export const {setRestaurant,addToCart,decreaseQuantity}=cartSlice.actions;
+export const {setRestaurant,addToCart,decreaseQuantity,clearCart}=cartSlice.actions;
 
 export default cartSlice.reducer;
