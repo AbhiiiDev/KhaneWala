@@ -13,7 +13,6 @@ const getRestaurant=async(req:Request,res:Response)=>{
         {
             return res.status(404).json({message:'Restaurant not found'})
         }
-        console.log(currentRestaurant);
         res.json(currentRestaurant);
     } catch (error) {
         res.status(400).json({message:'Error while finding user'})
@@ -31,18 +30,15 @@ try {
     }
  
     const existingRestaurant=await Restaurant.findOne({user:req.userId});
-    // console.log(existingRestaurant)
     if(existingRestaurant)
         {
             return res.status(409).json({message:"Restaurant already exists"});
         }
 
         const imageUrl=await uploadImage(req.file as Express.Multer.File);
-        console.log(imageUrl)
 
         
         const restaurant=new Restaurant(req.body);
-        // console.log(restaurant)
 
         restaurant.imageUrl=imageUrl;
         restaurant.user= new mongoose.Types.ObjectId(req.userId);
@@ -50,7 +46,6 @@ try {
 
         await restaurant.save();
 
-        // console.log(restaurant)
         res.status(201).send(restaurant);
 
 } catch (error) {

@@ -3,12 +3,9 @@ import Restaurant from "../models/Restaurant";
 
 const getRestaurant=async (req:Request,res:Response)=>{
     try {
-    console.log('inside get resutant')
     const restaurantId=req.params.restaurantId;
-    console.log(restaurantId);
 
     const restaurant=await Restaurant.findById(restaurantId);
-    console.log(restaurant)
 
     if(!restaurant){
         return res.status(404).json({message:"can't find any restaurant"})
@@ -17,7 +14,6 @@ const getRestaurant=async (req:Request,res:Response)=>{
     return res.json(restaurant);
 
 } catch (error) {
-    console.log('outside get restaurant')
     console.log(error);
     res.status(400).json({message:"something went wrong while searching restaurant through city"});
 }
@@ -27,14 +23,12 @@ const getRestaurant=async (req:Request,res:Response)=>{
 const searchRestaurant=async(req:Request,res:Response)=>{
     try {
       const city=req.params.city;
-console.log('city is: ',city);
       const searchQuery=(req.query.searchQuery as string )|| "";
       const selectedCuisines=(req.query.selectedCuisines as string) || "";
       const sortOptions=(req.query.sortOptions as string) || "lastUpdated";
       const page= parseInt(req.query.selectedCuisine as string) || 1;
 
       let query:any= {};
-      console.log('cuis',selectedCuisines);
       query['city']=new RegExp(city,'i');
 
       const cityCheck=await Restaurant.countDocuments(query);
