@@ -1,4 +1,5 @@
 import {AppState, Auth0Provider, User} from '@auth0/auth0-react'
+import { useEffect } from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 type Props ={
@@ -6,6 +7,9 @@ type Props ={
 }
 
 export default function Auth0provider({children}:Props) {
+  useEffect(()=>{
+    console.log(window.location.origin);
+  },[])
     const navigate=useNavigate();
 const clientId=import.meta.env.VITE_AUTH0_CLIENT_ID;
 const domain=import.meta.env.VITE_AUTH0_DOMAIN;
