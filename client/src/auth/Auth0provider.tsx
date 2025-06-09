@@ -9,11 +9,10 @@ export default function Auth0provider({children}:Props) {
     const navigate=useNavigate();
 const clientId=import.meta.env.VITE_AUTH0_CLIENT_ID;
 const domain=import.meta.env.VITE_AUTH0_DOMAIN;
-const redirectUri=window.location.origin;
 const audience=import.meta.env.VITE_AUTH0_AUDIENCE;
 console.log(window.location.origin);
-if (!domain || !clientId || !redirectUri) {
-  console.log('Unable to Initialise auth', clientId, domain, redirectUri);
+if (!domain || !clientId  ) {
+  console.log('Unable to Initialise auth', clientId, domain);
   return <div>Auth0 is not properly configured.</div>; // or null
 }
     
@@ -29,7 +28,7 @@ if (!domain || !clientId || !redirectUri) {
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-    redirect_uri: `${redirectUri}/`,
+    redirect_uri: `${window.location.origin}/callback`,
     audience:audience
   }}
   onRedirectCallback={onRedirect}
