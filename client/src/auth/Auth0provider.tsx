@@ -29,7 +29,7 @@ if (!domain || !clientId || !redirectUri) {
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-    redirect_uri: redirectUri,
+    redirect_uri: window.location.origin,
     audience:audience
   }}
   onRedirectCallback={onRedirect}
