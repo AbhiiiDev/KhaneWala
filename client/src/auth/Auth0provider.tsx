@@ -32,7 +32,7 @@ if (!domain || !clientId  ) {
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-    redirect_uri: `${window.location.origin}/callback`,
+    redirect_uri: `https://khane-wala.vercel.app/callback`,
     audience:audience
   }}
   onRedirectCallback={onRedirect}
