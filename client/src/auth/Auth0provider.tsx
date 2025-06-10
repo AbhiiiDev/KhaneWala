@@ -32,7 +32,7 @@ if (!domain || !clientId  ) {
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-    redirect_uri: `http://localhost:5173/callback`,
+    redirect_uri: `${window.location.origin}/callback`,
     audience:audience
   }}
   onRedirectCallback={onRedirect}
