@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 
 const OrderSummaryPage = () => {
-    const orderId=useParams();
-        useGetOrder(orderId);
+    const {orderId}=useParams();
+        const {order}=useGetOrder(orderId);
     useEffect(()=>{
     },[])
   return (
@@ -14,7 +14,17 @@ const OrderSummaryPage = () => {
      !! Order Successfull, Hold tight we are preaparing you order !!
     </div>
     <div>
-
+{order?.restaurant.restaurantName}
+    </div>
+    <div>
+{order?.items.map((item)=>(
+  <div>
+    {item.name}
+    <div>
+      {item.quantity}
+      </div>
+    </div>
+))}
     </div>
     </div>
     </div>

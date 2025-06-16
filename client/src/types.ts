@@ -54,3 +54,15 @@ export type CartState = {
   restaurant: Restaurant | undefined;
   items: CartItem[];
 };
+export type Order={
+  _id:string;
+  user:User;
+  restaurant:Restaurant;
+items:CartItem[];
+total:number;
+status:string;
+paymentStatus:string;
+paymentIntentId?:string;
+createdAt:string;
+updatedAt:string;
+}
