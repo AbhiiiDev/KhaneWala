@@ -8,6 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 import RestaurantSearchRoute from "./routes/RestaurantSearchRoute";
 import PaymentRoute from "./routes/payment";
 import Webhook from "./routes/webhook";
+import Order from "./routes/OrderRoute";
 const app = express();
 
 const allowedOrigins = ["http://localhost:5173", "https://khane-wala.vercel.app"];
@@ -47,6 +48,7 @@ app.use(express.json({ limit: "50MB" }));
 app.use("/api/payment", PaymentRoute);
 app.use("/api/v1/user", UserRoute);
 app.use("/api/restaurant", RestaurantSearchRoute);
+app.use('/api/order',Order);
 
 app.listen(8000, () => {
   console.log("server working fine on PORT: 8000");

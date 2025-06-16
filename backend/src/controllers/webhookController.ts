@@ -5,6 +5,7 @@ import Order from '../models/Order';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const WebhookController= async (req:Request, res:Response) => {
+  console.log('webhook controller called')
     const sig = req.headers['stripe-signature']!;
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -34,6 +35,7 @@ const WebhookController= async (req:Request, res:Response) => {
       
       try {
         const orderId=session?.metadata?.orderId;
+        console.log('updating order',orderId);
         if(orderId)
         {
           await Order.findByIdAndUpdate(orderId,{
