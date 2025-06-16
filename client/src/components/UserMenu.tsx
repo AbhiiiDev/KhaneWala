@@ -32,6 +32,11 @@ export default function UserMenu() {
            Manange Restaurant
           </Link>
         </DropdownMenuItem>
+    <DropdownMenuItem>
+          <Link to="/orders" className="font-bold text-orange-500 hover:bg-orange-200">
+           Orders
+          </Link>
+        </DropdownMenuItem>
 
         <DropdownMenuItem>
           <Button

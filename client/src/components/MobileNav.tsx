@@ -3,6 +3,7 @@ import {Sheet,SheetDescription,SheetHeader,SheetTitle,SheetTrigger,SheetContent}
 import { Button } from './ui/button'
 import {useAuth0} from '@auth0/auth0-react'
 import UserMenu from './UserMenu';
+import MobileMenu from './MobileMenu';
 
 const MobileNav = () => {
 
@@ -35,7 +36,7 @@ const {loginWithRedirect,isAuthenticated}=useAuth0();
 
         {
           isAuthenticated ?
-          ( <UserMenu/>)
+          ( <MobileMenu/>)
           :
           (  <Button className='flex-1' onClick={()=>loginWithRedirect()}>
           LogIn

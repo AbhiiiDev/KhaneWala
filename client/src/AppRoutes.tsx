@@ -9,7 +9,8 @@ import RestaurantPage from './pages/RestaurantPage';
 import SearchRestaurant from './pages/SearchRestaurant';
 import { MenuPage } from './pages/MenuPage';
 import CartPage from './pages/CheckoutPage';
-import SuccessPage from './pages/SuccessPage';
+import OrderSummaryPage from './pages/OrderSummaryPage';
+import MyOrders from './pages/MyOrders';
 
 const AppRoutes = () => {
 
@@ -27,7 +28,8 @@ const AppRoutes = () => {
 <Route path='/checkout' element={<Layout isHero={false}><CartPage /></Layout>}/>
 <Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
-<Route path='/success/:orderId' element={<Layout isHero={false}><SuccessPage/></Layout>}/>
+<Route path='/success/:orderId' element={<Layout isHero={false}><OrderSummaryPage/></Layout>}/>
+<Route path='/orders' element={<Layout isHero={false}><MyOrders/></Layout>}/>
 </Route>
 <Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>
 
