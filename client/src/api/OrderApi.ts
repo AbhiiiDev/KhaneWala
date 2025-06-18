@@ -1,11 +1,10 @@
 import { Order } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "react-query";
-import { Params } from "react-router-dom";
 
 const BASE_URL=import.meta.env.VITE_BASE_URL;
 
-export const useGetOrder=(orderId:Readonly<Params<string>>)=>{
+export const useGetOrder=(orderId:string|undefined)=>{
 const getOrder=async():Promise<Order>=>{
     const response=await fetch(`${BASE_URL}/api/order/${orderId}`);
     if(!response.ok) {

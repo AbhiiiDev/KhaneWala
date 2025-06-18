@@ -1,30 +1,30 @@
 import { useGetAllOrder } from "@/api/OrderApi"
+import PastOrderCard from "@/components/OrderCard";
 import { useEffect } from "react"
 
 const MyOrders = () => {
 
-   const {orders,isLoading} =useGetAllOrder();
+   const {orders} =useGetAllOrder();
     useEffect(()=>{
     },[])
   return (
     <div className="mt-32 min-h-[70vh]">
-      All my previous Orders !!
-      <div>
+      <h2 className="text-xl font-bold mb-4 text-center">Past Orders</h2>
+      <div className="flex flex-col gap-2 p-2">
 {orders?.map((order)=>(
     <div>
-        {order.restaurant.restaurantName}
-        <div>
-            {order.items.map((item)=>(
-                <>
-                <div>
-                    {item.name}
-                    </div>
-                    <div>
-                        {item.quantity}
-                        </div>
-                </>
-            ))}
-            </div>
+  <PastOrderCard
+  imageUrl={order.restaurant.imageUrl}
+  restaurantName={order.restaurant.restaurantName}
+  location={order.restaurant.city}
+  orderId={order._id}
+  orderStatus={order.paymentStatus}
+  orderTime={order.createdAt}
+  deliveryTime="Sun, Mar 2, 2025, 02:31 PM"
+  items={order.items}
+  totalPaid={order.total}
+/>
+
         </div>
 ))}
       </div>
