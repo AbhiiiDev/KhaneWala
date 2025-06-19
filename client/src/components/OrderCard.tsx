@@ -43,7 +43,7 @@ const PastOrderCard: FC<PastOrderCardProps> = ({
           <div className="flex justify-between">
             <div>
               <h3 className="text-lg font-semibold">{restaurantName}</h3>
-              <p className="text-sm text-muted-foreground">{location}</p>
+              <p className="text-sm font-semibold text-muted-foreground">{location}</p>
               <p className="text-sm text-gray-500">
                 ORDER #{orderId} | {orderTime}
               </p>
@@ -53,14 +53,14 @@ const PastOrderCard: FC<PastOrderCardProps> = ({
             </div>
             <div className="text-sm text-right">
               <p className="text-gray-600">{orderStatus} on {deliveryTime}</p>
-              <span className="text-green-600 text-lg">✔</span>
+              <span className="text-black text-sm bg-green-500 rounded-full p-1">✔</span>
             </div>
           </div>
 
           <hr className="my-2" />
 
           <div className="flex justify-between flex-wrap items-start text-sm">
-            <p className="text-gray-800 max-w-md">
+            <p className="text-gray-800 font-bold max-w-md">
               {items.map((item, index) => (
                 <span key={index}>
                   {item.name} x {item.quantity}

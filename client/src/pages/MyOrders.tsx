@@ -7,11 +7,12 @@ const MyOrders = () => {
    const {orders} =useGetAllOrder();
     useEffect(()=>{
     },[])
+    const sortedOrders=orders?.sort((a,b)=>new Date(b.createdAt).getTime()-new Date(a.createdAt).getTime())
   return (
     <div className="mt-32 min-h-[70vh]">
       <h2 className="text-xl font-bold mb-4 text-center">Past Orders</h2>
-      <div className="flex flex-col gap-2 p-2">
-{orders?.map((order)=>(
+      <div className="flex flex-col gap-8 p-2">
+{sortedOrders?.map((order)=>(
     <div>
   <PastOrderCard
   imageUrl={order.restaurant.imageUrl}
