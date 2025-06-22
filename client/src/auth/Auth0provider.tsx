@@ -7,9 +7,7 @@ type Props ={
 }
 
 export default function Auth0provider({children}:Props) {
-  useEffect(()=>{
-    console.log(window.location.origin);
-  },[])
+
     const navigate=useNavigate();
 const clientId=import.meta.env.VITE_AUTH0_CLIENT_ID;
 const domain=import.meta.env.VITE_AUTH0_DOMAIN;
@@ -21,18 +19,19 @@ if (!domain || !clientId  ) {
 }
     
     const onRedirect = (appState?: AppState, user?: User) => {
-      console.log('🔁 onRedirectCallback called');
-      console.log('🔒 Current URL:', window.location.href);
-      console.log('📦 AppState:', appState);
-      console.log('👤 User:', user);
-    
-      navigate('/');}
+console.log('🔁 onRedirectCallback called');
+  console.log('🔒 Current URL:', window.location.href);
+  console.log('📦 AppState:', appState);
+  console.log('👤 User:', user);
+  // Avoid manual navigation unless required
+  // navigate(appState?.returnTo || '/'); // Exa
+    }
   return (
   <Auth0Provider
   clientId={clientId}
   domain={domain}
   authorizationParams={{
-    redirect_uri: `${window.location.origin}/callback`,
+    redirect_uri: `${window.location.origin}/auth-callback`,
     audience:audience
   }}
   onRedirectCallback={onRedirect}
