@@ -1,18 +1,62 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
-    <div className='min-h-[120x]  bottom-0 container mx-auto flex flex-col md:flex-row  justify-between items-center bg-black space-y-2 p-2 shadow-2xl'>
-        <span className='font-bold text-3xl text-white'>
-    Khane<span className="text-orange-500">Wala.com</span>
-        </span>
-        <span className='text-lg text-white'>
-    Made with 💻  By  <span className='font-medium text-xl text-orange-500'>Abhishek Verma.</span>
-        </span>
-        <div className='flex flex-col text-white gap-2 text-base'>
-        <span>Terms & Conditions Apply</span>
-        <span>Privacy @ Rights Reserved</span>
+    <footer className="bg-gray-800 text-white py-6 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="mb-4 md:mb-0">
+          <div className="flex items-center">
+            <span className="text-2xl font-bold">Khane<span className='text-orange-500'>Wala.com</span></span>
+            <span className="text-sm ml-2 text-gray-500">— trusted restaurant partner —</span>
+          </div>
         </div>
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+          <div>
+            <h3 className="font-semibold">ABOUT KhaneWala</h3>
+            <ul className="mt-2 space-y-1">
+              <li><Link to="#" className="hover:underline">Who We Are</Link></li>
+              <li><Link to="#" className="hover:underline">Blog</Link></li>
+              <li><Link to="#" className="hover:underline">Work With Us</Link></li>
+              <li><Link to="#" className="hover:underline">Investors Relations</Link></li>
+              <li><Link to="#" className="hover:underline">Report Fraud</Link></li>
+              <li><Link to="#" className="hover:underline">Press Kit</Link></li>
+            </ul>
+          </div>
+    
+          <div>
+            <h3 className="font-semibold">FOR RESTAURANTS</h3>
+            <ul className="mt-2 space-y-1">
+              <li><a href="#" className="hover:underline">Partner With Us</a></li>
+              <li><a href="#" className="hover:underline">Apps For You</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold">LEARN MORE</h3>
+            <ul className="mt-2 space-y-1">
+              <li><a href="#" className="hover:underline">Privacy</a></li>
+              <li><a href="#" className="hover:underline">Security</a></li>
+              <li><a href="#" className="hover:underline">Terms</a></li>
+              <li><a href="#" className="hover:underline">Sitemap</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold">SOCIAL LINKS</h3>
+            <div className="mt-2 flex space-x-4">
+              <a href="#" className="hover:text-gray-800"><span className="sr-only">Instagram</span>📸</a>
+              <a href="#" className="hover:text-gray-800"><span className="sr-only">LinkedIn</span>💼</a>
+              <a href="#" className="hover:text-gray-800"><span className="sr-only">Facebook</span>👍</a>
+              <a href="#" className="hover:text-gray-800"><span className="sr-only">YouTube</span>🎥</a>
+            </div>
       
-    </div>
-  )
-}
+          </div>
+        </div>
+      </div>
+      <div className="text-center mt-4 text-xs text-gray-500">
+        By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners. © 2008-2024 © Zomato™ Ltd. All rights reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
