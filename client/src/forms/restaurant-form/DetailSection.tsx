@@ -11,7 +11,7 @@ const {control}=useFormContext();
     <div className='space-y-4'>
       <div>
     <h2 className='text-2xl font-bold'>
-    Manage Restaurant
+     Restaurant Information
     </h2>
     <FormDescription>
         Manage Restaurant Details

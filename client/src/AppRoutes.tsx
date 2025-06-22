@@ -11,6 +11,7 @@ import { MenuPage } from './pages/MenuPage';
 import CartPage from './pages/CheckoutPage';
 import OrderSummaryPage from './pages/OrderSummaryPage';
 import MyOrders from './pages/MyOrders';
+import PartnerWithUs from './pages/PartnerWithUs';
 
 const AppRoutes = () => {
 
@@ -26,6 +27,7 @@ const AppRoutes = () => {
 <Route element={<ProtectedRoute/>}> 
 
 <Route path='/checkout' element={<Layout isHero={false}><CartPage /></Layout>}/>
+<Route path='/partner-with-us' element={<Layout isHero={false}><PartnerWithUs /></Layout>}/>
 <Route path='/userProfile' element={<Layout isHero={false}><UserProfilePage /></Layout>}/>
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
 <Route path='/success/:orderId' element={<Layout isHero={false}><OrderSummaryPage/></Layout>}/>

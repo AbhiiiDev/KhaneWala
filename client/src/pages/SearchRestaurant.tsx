@@ -5,7 +5,7 @@ import RestaurantSearchCard from "@/components/RestaurantSearchCard";
 import SearchBar, { searchForm } from "@/components/SearchBar";
 import { useState } from "react";
 import CuisineFilter from "@/components/CuisineFilter";
-import { LoadingState } from "@/components/Loader";
+import LoadingState  from "@/components/Loader";
 
 export type SearchState={
   searchQuery: string,

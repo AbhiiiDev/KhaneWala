@@ -8,13 +8,15 @@ import {
   import { useAuth0 } from "@auth0/auth0-react";
   import { Link } from "react-router-dom";
   import { Button } from "./ui/button";
+import { useGetUserRequest } from "@/api/MyUserApi";
   
 
 
 export default function UserMenu() {
 
     const { user, logout } = useAuth0();
-
+    const{currentUser} =useGetUserRequest();
+console.log(currentUser?.role)
   return (
   <DropdownMenu>
     <DropdownMenuTrigger className="flex gap-1 hover:text-orange-700">
@@ -23,14 +25,18 @@ export default function UserMenu() {
     </DropdownMenuTrigger>
     <DropdownMenuContent>
     <DropdownMenuItem>
-          <Link to="/userProfile" className="font-bold text-orange-500 hover:bg-orange-200">
+       <Link to="/userProfile" className="font-bold text-orange-500 hover:bg-orange-200">
             User Profile
           </Link>
         </DropdownMenuItem>
     <DropdownMenuItem>
-          <Link to="/manageRestaurant" className="font-bold text-orange-500 hover:bg-orange-200">
+{  currentUser?.role==='restaurant' ?  (  <Link to="/manageRestaurant" className="font-bold text-orange-500 hover:bg-orange-200">
            Manange Restaurant
-          </Link>
+          </Link>) :
+(<Link to="/partner-with-us" className="font-bold text-orange-500 hover:bg-orange-200">
+           Partner with Us
+          </Link>)
+          }
         </DropdownMenuItem>
     <DropdownMenuItem>
           <Link to="/orders" className="font-bold text-orange-500 hover:bg-orange-200">

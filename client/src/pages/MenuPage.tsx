@@ -1,5 +1,5 @@
 import { useGetRestaurant } from "@/api/RestaurantSearchApi";
-import { LoadingState } from "@/components/Loader";
+import LoadingState  from "@/components/Loader";
 import { useParams } from "react-router-dom"
 import { Card } from "@/components/ui/card";
 import { IndianRupee, WatchIcon } from "lucide-react";
