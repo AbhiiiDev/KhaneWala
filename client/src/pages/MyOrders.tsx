@@ -1,13 +1,15 @@
 import { useGetAllOrder } from "@/api/OrderApi"
+import Loader from "@/components/Loader";
 import PastOrderCard from "@/components/OrderCard";
 import { useEffect } from "react"
 
 const MyOrders = () => {
 
-   const {orders} =useGetAllOrder();
+   const {orders,isLoading} =useGetAllOrder();
     useEffect(()=>{
     },[])
     const sortedOrders=orders?.sort((a,b)=>new Date(b.createdAt).getTime()-new Date(a.createdAt).getTime())
+    if(isLoading) return <Loader/>
   return (
     <div className="mt-32 min-h-[70vh]">
       <h2 className="text-xl font-bold mb-4 text-center">Past Orders</h2>
