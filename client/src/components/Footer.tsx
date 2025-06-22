@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6 px-4">
+    <footer className="bg-gray-800 text-white py-6 px-4 z-30">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
           <div className="flex items-center flex-col md:flex-row">
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
           <div>
-            <h3 className="font-bold underline">ABOUT KhaneWala</h3>
+            <h3 className="font-bold underline">ABOUT Khane<span className='text-orange-500'>Wala</span></h3>
             <ul className="mt-2 space-y-1 text-sm text-secondary">
               <li><Link to="#" className="hover:underline">Who We Are</Link></li>
               <li><Link to="#" className="hover:underline">Blog</Link></li>
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="font-bold underline">LEARN MORE</h3>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-1 text-sm text-secondary">
               <li><a href="#" className="hover:underline">Privacy</a></li>
               <li><a href="#" className="hover:underline">Security</a></li>
               <li><a href="#" className="hover:underline">Terms</a></li>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="font-bold underline">SOCIAL LINKS</h3>
-            <div className="mt-2 flex space-x-4">
+            <div className="mt-2 flex space-x-4 ">
               <a href="#" className="hover:text-gray-800"><span className="sr-only">Instagram</span>📸</a>
               <a href="#" className="hover:text-gray-800"><span className="sr-only">LinkedIn</span>💼</a>
               <a href="#" className="hover:text-gray-800"><span className="sr-only">Facebook</span>👍</a>
